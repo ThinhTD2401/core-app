@@ -1,0 +1,112 @@
+﻿
+@model RegisterViewModel
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "Đăng ký";
+}
+<!-- Breadcrumbs -->
+
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    <li class="home"> <a title="Trang chủ" href="/">Trang chủ</a><span>&raquo;</span></li>
+                    <li><strong>Đăng ký</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs End -->
+<!-- Main Container -->
+<section class="main-container col1-layout">
+    <div class="main container">
+        <div class="page-content">
+            <div class="account-login">
+                <div class="col-md-3 col-sm-2"></div>
+                <div class="col-md-6 col-sm-8">
+                    <div class="single-input p-bottom50 clearfix">
+                        <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+                            <div class="row">
+                                <div class="col-sm-6 padding-bottom-15">
+                                    <label>Full Name:</label>
+                                    <div class="input-text">
+                                        <input type="text" asp-for="FullName" name="FullName" class="form-control">
+                                        <span asp-validation-for="FullName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 padding-bottom-15">
+                                    <label>Email:</label>
+                                    <div class="input-text">
+                                        <input type="text" asp-for="Email" name="Email" class="form-control">
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 padding-bottom-15">
+                                    <label>Password:</label>
+                                    <div class="input-text">
+                                        <input type="password" asp-for="Password" name="Password" class="form-control">
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 padding-bottom-15">
+                                    <label>Confirm Password:</label>
+                                    <div class="input-text">
+                                        <input type="password" asp-for="ConfirmPassword" name="ConfirmPassword" class="form-control">
+                                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 padding-bottom-15">
+                                    <label>DOB:</label>
+                                    <div class="input-text">
+                                        <input type="date" asp-for="BirthDay" name="BirthDay" class="form-control">
+                                        <span asp-validation-for="BirthDay" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                @*<div class="col-xs-12 padding-bottom-15">
+                                        <label>Avatar:</label>
+                                        <div class="input-text">
+                                            <input type="file" asp-for="Avatar" name="dob" class="form-control">
+                                        </div>
+                                    </div>*@
+                                <div class="col-sm-6 padding-bottom-15">
+                                    <label>Phone Number:</label>
+                                    <div class="input-text">
+                                        <input type="text" name="phoneNumber" asp-for="PhoneNumber" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6  padding-bottom-15">
+                                    <label>Address:</label>
+                                    <div class="input-text">
+                                        <input type="text" name="address" asp-for="Address" class="form-control">
+                                    </div>
+                                </div>
+
+                                @*<div class="col-xs-6  padding-bottom-15">
+                                    <recaptcha />
+                                    <span class="text-danger" id="recaptchaErrorMessage"></span>
+                                </div>*@
+
+                                <div class="col-xs-12 padding-bottom-15">
+                                    <div class="submit-text">
+                                        <button type="submit" class="button"><i class="fa fa-user"></i>&nbsp; <span>Register</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Main Container End -->
+
+@section Scripts {
+
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <recaptcha-script validation-message-element-id="recaptchaErrorMessage" jquery-validation="true" />
+}

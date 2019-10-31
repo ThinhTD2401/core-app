@@ -1,0 +1,112 @@
+﻿@model CoreApp.Models.CommonViewModels.SearchResultViewModel
+@{
+    ViewData["Title"] = "Search results of " + Model.Keyword;
+    ViewData["MetaKeyword"] = "Search results of " + Model.Keyword;
+    ViewData["MetaDescription"] = "Search results of " + Model.Keyword;
+    var isHomePage = (ViewData["isHomePage"] != null && (bool)ViewData["isHomePage"] == true);
+    var keyword = ViewData["keywordSearch"] != null ? ViewData["keywordSearch"] : string.Empty;
+}
+<!-- Main Container -->
+<div class="main-container col1-layout" id="search-component">
+    <div class="container">
+        <div class="row">
+            <div class="col-main col-sm-12 col-xs-12">
+                <div class="shop-inner">
+                    <div class="page-title">
+                        @{
+                            if (isHomePage)
+                            {
+                                <h2>Các sản phẩm khác</h2>
+                            }
+                            else
+                            {
+                                <h2>Kết quả tìm kiếm: @keyword</h2>
+                            }
+                        }
+                    </div>
+                    <div class="toolbar column">
+                        <form action="/search.html" method="get">
+                            <input type="hidden" name="keyword" value="@Model.Keyword" />
+                            <div class="sorter">
+                                <div class="short-by">
+                                    <label>Sắp xếp theo:</label>
+                                    <select  asp-for="SortBy" asp-items="Model.SortBies"></select>
+                                </div>
+                                <div class="short-by">
+                                    <label>Thứ tự sắp xếp:</label>
+                                    <select  asp-for="SortOrder" asp-items="Model.SortOrders"></select>
+                                </div>
+                                <div class="short-by page">
+                                    <label>Sản phẩm / trang:</label>
+                                    <select  asp-for="PageSize" asp-items="Model.PageSizes"></select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="product-grid-area">
+                        <ul class="products-grid">
+                            @foreach (var item in Model.Data.Results)
+                            {
+                                var url = "/" + item.SeoAlias + "-san-pham." + item.Id + ".html";
+                                <li class="item col-lg-3 col-md-4 col-sm-6 col-xs-6 ">
+                                    <div class="product-item">
+                                        <div class="item-inner">
+                                            <div class="product-thumbnail">
+                                                @{
+                                                    if (item.PromotionPrice.HasValue)
+                                                    {
+                                                        var percentSale = Math.Ceiling((item.PromotionPrice.Value - item.OriginalPrice) / (item.OriginalPrice));
+                                                        <div class="icon-sale-label sale-left">Khuyến mãi @percentSale %</div>
+                                                    }
+
+                                                    if (item.HotFlag.HasValue && item.HotFlag.Value)
+                                                    {
+                                                        <div class="icon-new-label new-right">Mới</div>
+                                                    }
+                                                }
+                                                <div class="pr-img-area">
+                                                    <a title="Ipsums Dolors Untra" href="@url">
+                                                        <figure> <img class="first-img" src="@item.Image" alt="@item.Name"> <img class="hover-img" src="@item.Image" alt="@item.Name"></figure>
+                                                    </a>
+                                                </div>
+                                                <div class="pr-info-area">
+                                                    <div class="pr-button">
+                                                        <div class="mt-button quick-view"> <a href="@url"> <i class="fa fa-search"></i> </a> </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="item-info">
+                                                <div class="info-inner">
+                                                    <div class="item-title"> <a title="@item.Name" href="@url">@item.Name</a> </div>
+                                                    <div class="item-content">
+                                                        <div class="rating">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                        </div>
+                                                        <div class="item-price">
+                                                            <div class="price-box"> <span class="regular-price"> <span class="price">@item.Price.ToString("N0")</span> </span> </div>
+                                                        </div>
+                                                        <div class="pro-action">
+                                                            <button type="button" class="add-to-cart" data-id="@item.Id"><span> Mua ngay</span> </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            }
+
+                        </ul>
+                    </div>
+                    @(await Component.InvokeAsync("Pager", Model.Data))
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main Container End -->

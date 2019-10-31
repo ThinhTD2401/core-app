@@ -1,0 +1,137 @@
+﻿
+@model BillViewModel
+@{
+    Layout = null;
+}
+@*<h1 style="background-color:#e83f33;color:#fff;font-weight:600;text-align: center;font-family: sans-serif;font-size: 23px;padding: 20px;">THShop đơn hàng mới</h1>*@
+@*<table>
+    <tr>
+        <td>Customer Name</td>
+        <td>@Model.CustomerName</td>
+    </tr>
+    <tr>
+        <td>Address</td>
+        <td>@Model.CustomerAddress</td>
+    </tr>
+    <tr>
+        <td>Phone</td>
+        <td>@Model.CustomerMobile</td>
+    </tr>
+    <tr>
+        <td>Date</td>
+        <td>@Model.DateCreated.ToString("dd/MM/yyyy hh:mm")</td>
+    </tr>
+    <tr>
+        <td>Details</td>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.BillDetails)
+                    {
+                    <tr>
+                        <td>@item.Product.Name</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.Price</td>
+                        <td>@((item.Quantity * item.Price).ToString("N0"))</td>
+                    </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5">
+                            Total: @Model.BillDetails.Sum(x => x.Quantity * x.Price).ToString("N0")
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </td>
+    </tr>
+</table>*@
+
+<h1 style="background-color:#e83f33;color:#fff;font-weight:600;text-align: center;font-family: sans-serif;font-size: 23px;padding: 20px;">THShop đơn hàng mới</h1>
+<table style=" width: 100%;border-collapse: collapse; padding: 10px;">
+        <tbody>
+            <tr style=" border: 1px solid #ddd;">
+                <td style=" padding: 10px;font-size: 19px;border: 1px solid #ddd;">
+                    Khách hàng:
+                </td>
+                <td style="padding: 10px;font-size: 19px;border: 1px solid #ddd;">
+                    @Model.CustomerName
+                </td>
+            </tr>
+            <tr style="border: 1px solid #ddd;">
+                <td style="padding: 10px;font-size: 19px;border: 1px solid #ddd;">
+                    Địa chỉ:
+                </td>
+                <td style=" padding: 10px;font-size: 19px;border: 1px solid #ddd;">
+                    @Model.CustomerAddress
+                </td>
+            </tr>
+            <tr style=" border: 1px solid #ddd;">
+                <td style="padding: 10px;font-size: 19px;border: 1px solid #ddd;">
+                    Điện thoại:
+                </td>
+                <td style="padding: 10px;font-size: 19px;border: 1px solid #ddd;">@Model.CustomerMobile</td>
+            </tr>
+            <tr style=" padding: 10px; font-size: 19px; border: 1px solid #ddd;">
+                <td style="padding: 10px;font-size: 19px;border: 1px solid #ddd;">
+                    Ngày đặt hàng:
+                </td>
+                <td style=" padding: 10px;font-size: 19px;border: 1px solid #ddd;">
+                    @Model.DateCreated.ToString("dd/MM/yyyy hh:mm")
+                </td>
+            </tr>
+            <tr style="border: 1px solid #ddd;">
+                <td style="padding: 10px; font-size: 19px;border: 1px solid #ddd;">
+                    Chi tiết:
+                </td>
+                <td style="padding: 10px;font-size: 19px;border: 1px solid #ddd;">
+                    <table style="border-collapse: collapse; width: 100%;">
+                        <thead style=" border: 1px solid #ddd;padding: 10px;">
+                            <tr>
+                                <th style="padding: 10px;border: 1px solid #ddd;">Sản phẩm</th>
+                                <th style="padding: 10px;border: 1px solid #ddd;">Số lượng</th>
+                                <th style="padding: 10px;border: 1px solid #ddd;">Giá</th>
+                                <th style="padding: 10px;font-size: 19px;border: 1px solid #ddd;">Tổng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.BillDetails)
+                            {
+                            <tr>
+                                <td style=" padding: 10px;font-size: 19px;border: 1px solid #ddd;">
+                                    @item.Product.Name
+                                </td>
+                                <td style="padding: 10px;font-size: 19px;border: 1px solid #ddd; text-align:center">
+                                    @item.Quantity
+                                </td>
+                                <td style="padding: 10px;font-size: 19px;border: 1px solid #ddd; text-align:center">
+                                    @item.Price
+                                </td>
+                                <td style="padding: 10px;font-size: 19px;border: 1px solid #ddd; text-align:center">
+                                    @((item.Quantity * item.Price).ToString("N0"))
+                                </td>
+                            </tr>
+                            }
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5" style="padding: 10px;font-size: 19px;border: 1px solid #ddd;">
+                                    Tổng tiền: @Model.BillDetails.Sum(x => x.Quantity * x.Price).ToString("N0")
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>

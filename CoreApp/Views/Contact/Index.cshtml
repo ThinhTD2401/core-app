@@ -1,0 +1,106 @@
+﻿@using CoreApp.Models.CommonViewModels;
+@model ContactPageViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+@section Scripts{
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn9gaKzspPwRtaABhpdtgZnmnkoAxy3ek">
+    </script>
+    <script src="~/client-app/controllers/contact/index.js" asp-append-version="true"></script>
+    <script>
+        var contactObj = new ContactController();
+        contactObj.initialize();
+    </script>
+}
+<input type="hidden" id="hidLng" value="@Model.Contact.Lng" />
+<input type="hidden" id="hidLat" value="@Model.Contact.Lat" />
+<input type="hidden" id="hidAddress" value="@Model.Contact.Address" />
+<input type="hidden" id="hidName" value="@Model.Contact.Name" />
+<!-- Breadcrumbs -->
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    <li class="home"> <a title="Trang chủ" href="trang-chu.html">Trang chủ</a><span>&raquo;</span></li>
+                    <li><strong>Liên hệ</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs End -->
+<!-- Main Container -->
+<section class="main-container col1-layout">
+    <div class="main container">
+        <div class="row">
+            <section class="col-main col-sm-12">
+                <div id="contact" class="page-content page-contact">
+                    <div class="page-title">
+                        <h2>Liên hệ với chúng tôi</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6" id="contact_form_map">
+                            <h3 class="page-subheading">Thông tin liên hệ</h3>
+                            <ul class="store_info">
+                                <li><i class="fa fa-home"></i>@Model.Contact.Address</li>
+                                <li><i class="fa fa-phone"></i><span>@Model.Contact.Phone</span></li>
+                                <li><i class="fa fa-envelope"></i>Email: <span><a href="mailto:@Model.Contact.Email">@Model.Contact.Email</a></span></li>
+                            </ul>
+                            @if (ViewData["Success"] == null)
+                            {
+                                <form action="/lien-he.html" method="post">
+                                    <h3 class="page-subheading">Gửi phản hồi</h3>
+                                    <div asp-validation-summary="All" class="text-danger"></div>
+                                    @Html.AntiForgeryToken()
+                                    <div class="contact-form-box">
+                                        <div class="form-selector">
+                                            <label>Họ tên</label>
+                                            <input type="text" class="form-control input-sm" asp-for="Feedback.Name" />
+                                        </div>
+                                        <div class="form-selector">
+                                            <label>Email</label>
+                                            <input type="text" class="form-control input-sm" asp-for="Feedback.Email" />
+                                        </div>
+                                        <div class="form-selector">
+                                            <label>Nội dung phản hồi</label>
+                                            <textarea class="form-control input-sm" rows="10" asp-for="Feedback.Message"></textarea>
+                                        </div>
+                                        <div class="form-selector">
+                                            <button type="submit" class="button"><i class="icon-paper-plane icons"></i>&nbsp; <span>Gửi phản hồi</span></button>
+                                            <button class="button" id="btnCancel"><i class="icon-close icons"></i>&nbsp; <span>Hủy</span></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            }
+                        </div>
+                        <div class="col-sm-6">
+                            @if (ViewData["Success"] != null)
+                            {
+
+                                if ((bool)ViewData["Success"] == true)
+                                {
+                                    <div class="alert alert-success">
+                                        Cảm ơn bạn đã phản hồi. Chúng tôi sẽ sớm xác nhận phản hồi của bạn!
+                                    </div>
+
+                                }
+                                else
+                                {
+                                    <div class="alert alert-danger">
+                                        Xảy ra lỗi trong quá trình gửi phản hồi. Vui lòng liện hệ quản trị để được hỗ trợ.
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <div id="map" style="width:100%;height:500px;"></div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+<!-- Main Container End -->

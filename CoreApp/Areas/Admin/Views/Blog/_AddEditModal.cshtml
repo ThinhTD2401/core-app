@@ -1,0 +1,113 @@
+﻿<div id="modal-add-edit" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close btn-close-pop" aria-hidden="true">×</button>
+                <h4 class="modal-title">Thêm mới hoặc sửa bài viết</h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal" role="form" id="frmMaintainance">
+                        <div class="form-group">
+                            <input type="hidden" id="hidIdM" value="0" />
+                            <input type="hidden" id="hidImage" value="0" />
+                            <label for="txtNameM" class="col-md-2 col-xs-12 control-label no-padding-right">Tiêu đề</label>
+                            <div class="col-md-10 col-xs-12">
+                                <input type="text" name="txtNameM" class="form-control" id="txtNameM">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtDescM" class="col-md-2 col-xs-12 control-label no-padding-right">Mô tả ngắn</label>
+                            <div class="col-md-10 col-xs-12">
+                                <textarea rows="4" name="txtDescM" class="form-control" id="txtDescM"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtImageM" class="col-md-2 col-xs-12 control-label no-padding-right">Ảnh</label>
+                            <div class="col-md-10 col-sm-12">
+                                <div class="input-group browser-file">
+                                    <input type="text" name="txtImage" class="form-control" id="txtImage" readonly/>
+                                    <input type="file" id="fileInputImage" style="display:none" />
+                                    <span class="input-group-btn">
+                                        <input type="button" id="btnSelectImg" class="btn btn-default" value="Chọn ảnh" />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-12 col-xs-12" id="img-blog-content">
+                            
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtContent" class="col-md-2 col-xs-12 control-label no-padding-right">Nội dung</label>
+                            <div class="col-md-10 col-xs-12">
+                                <textarea id="txtContent" rows="6" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtMetakeywordM" class="col-md-2 col-xs-12 control-label no-padding-right">Tiêu đề SEO</label>
+                            <div class="col-md-10 col-xs-12">
+                                <input type="text" name="txtSeoPageTitleM" class="form-control" id="txtSeoPageTitleM">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtSeoAliasM" class="col-md-2 col-xs-12 control-label no-padding-right">SEO Url</label>
+                            <div class="col-md-10 col-xs-12">
+                                <input type="text" name="txtSeoAliasM" class="form-control" id="txtSeoAliasM">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtMetakeywordM" class="col-md-2 col-xs-12 control-label no-padding-right">Từ khóa SEO</label>
+                            <div class="col-md-10 col-xs-12">
+                                <input type="text" name="txtMetakeywordM" class="form-control" id="txtMetakeywordM">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtMetaDescriptionM" class="col-md-2 col-xs-12 control-label no-padding-right">Mô tả SEO</label>
+                            <div class="col-md-10 col-xs-12">
+                                <textarea rows="3" name="txtMetaDescriptionM" class="form-control" id="txtMetaDescriptionM"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtTagM" class="col-md-2 col-xs-12 control-label no-padding-right">Tag (phân cách bởi dấu phẩy)</label>
+                            <div class="col-md-10 col-xs-12">
+                                <input type="text" name="txtTagM" class="form-control" id="txtTagM">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" checked="checked" id="ckStatusM">
+                                        <span class="text">Trạng thái</span>
+                                    </label>
+
+                                    <label>
+                                        <input type="checkbox" checked="checked" id="ckShowHomeM">
+                                        <span class="text">Hiển thị trang chủ</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnSave" class="btn btn-success">Lưu</button>
+                                <button type="button" id="btnCancel" data-dismiss="modal" class="btn btn-danger btn-close-pop">Hủy</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="img-blog-template" type="x-tmpl-mustache">
+    <div class="col-md-3 col-md-push-2 image-product">
+        <div class="img-wrapper">
+            <span class="icon-image-close" data-path="{{srcImage}}"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+            <img src="{{srcImage}}" class="img-thumbnail" />
+        </div>
+    </div>
+</script>

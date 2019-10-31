@@ -1,0 +1,24 @@
+﻿@model CoreApp.Models.CommonViewModels.SearchResultViewModel
+@{
+    ViewData["Title"] = "Search results of " + Model.Keyword;
+    ViewData["MetaKeyword"] = "Search results of " + Model.Keyword;
+    ViewData["MetaDescription"] = "Search results of " + Model.Keyword;
+}
+<!-- Breadcrumbs -->
+
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    <li class="home"> <a title="Go to Home Page" href="/">Trang chủ</a><span>&raquo;</span></li>
+                    <li><strong>Tìm kiếm</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs End -->
+<!-- Main Container -->
+@(await Component.InvokeAsync("Search", new { keyword = Model.Keyword, pageSize = Model.PageSize, sortBy = Model.SortBy, sortOrder = Model.SortOrder, pageIndex = Model.PageIndex }))
+<!-- Main Container End -->

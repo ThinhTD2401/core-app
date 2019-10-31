@@ -1,0 +1,483 @@
+2019-09-22T15:28:08.6066335+07:00 0HLPV6R649OSL:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/   (ca22a1cb)
+2019-09-22T15:28:08.6066335+07:00 0HLPV6R649OSM:00000001 [INF] Request starting HTTP/1.1 DEBUG http://localhost:56851/  0 (ca22a1cb)
+2019-09-22T15:28:08.6830185+07:00 0HLPV6R649OSM:00000001 [INF] Request finished in 58.0326ms 200  (791a596a)
+2019-09-22T15:28:09.5813818+07:00 0HLPV6R649OSL:00000001 [INF] Route matched with "{action = \"Index\", controller = \"Home\", area = \"\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index()" on controller "CoreApp.Controllers.HomeController" ("CoreApp"). (122b2fdf)
+2019-09-22T15:28:09.6487705+07:00 0HLPV6R649OSL:00000001 [INF] Executing action method "CoreApp.Controllers.HomeController.Index (CoreApp)" - Validation state: Valid (dad538d7)
+2019-09-22T15:28:09.7984514+07:00 0HLPV6R649OSL:00000001 [INF] Entity Framework Core "2.1.11-servicing-32099" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=CoreApp.Data.EF " (9958f5bb)
+2019-09-22T15:28:09.9525426+07:00 0HLPV6R649OSL:00000001 [WRN] The Include operation for navigation '"[c].Products"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2019-09-22T15:28:10.1412391+07:00 0HLPV6R649OSL:00000001 [INF] Executed DbCommand ("18"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [c].[Id], [c].[Name], [c].[Description], [c].[ParentId], [c].[HomeOrder], [c].[Image], [c].[HomeFlag], [c].[DateCreated], [c].[DateModified], [c].[SortOrder], [c].[Status], [c].[SeoPageTitle], [c].[SeoAlias], [c].[SeoKeywords], [c].[SeoDescription]
+FROM [ProductCategories] AS [c]
+WHERE [c].[HomeFlag] = 1
+ORDER BY [c].[HomeOrder], [c].[Id]" (0723d8ff)
+2019-09-22T15:28:10.4255155+07:00 0HLPV6R649OSL:00000001 [INF] Executed DbCommand ("47"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) AND ([x].[HotFlag] = 1)
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2019-09-22T15:28:10.7238562+07:00 0HLPV6R649OSL:00000001 [INF] Executed DbCommand ("82"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2019-09-22T15:28:10.7820768+07:00 0HLPV6R649OSL:00000001 [INF] Executed DbCommand ("13"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [t].[Id0], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[ViewCount], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Status]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x0].[DateCreated], [x0].[Id], [x.ProductCategory0].[Id] AS [Id0]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE [x0].[Status] = 1
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id], [x.ProductCategory0].[Id]
+) AS [t] ON [x.ProductCategory.Products].[CategoryId] = [t].[Id0]
+ORDER BY [t].[DateCreated] DESC, [t].[Id], [t].[Id0]" (0723d8ff)
+2019-09-22T15:28:10.9116932+07:00 0HLPV6R649OSL:00000001 [INF] Executed DbCommand ("5"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[Image], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[DateCreated], [x].[DateModified], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [Blogs] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC, [x].[Id]" (0723d8ff)
+2019-09-22T15:28:10.9516380+07:00 0HLPV6R649OSL:00000001 [INF] Executed DbCommand ("9"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [x.BlogTags].[BlogId], [x.BlogTags].[TagId]
+FROM [BlogTags] AS [x.BlogTags]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x0].[DateCreated], [x0].[Id]
+    FROM [Blogs] AS [x0]
+    WHERE [x0].[Status] = 1
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id]
+) AS [t] ON [x.BlogTags].[BlogId] = [t].[Id]
+ORDER BY [t].[DateCreated] DESC, [t].[Id]" (0723d8ff)
+2019-09-22T15:28:10.9951508+07:00 0HLPV6R649OSL:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Image], [x].[Url], [x].[DisplayOrder], [x].[Status], [x].[Content], [x].[GroupAlias]
+FROM [Slides] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)" (0723d8ff)
+2019-09-22T15:28:11.0341897+07:00 0HLPV6R649OSL:00000001 [INF] Executed action method "CoreApp.Controllers.HomeController.Index (CoreApp)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 1366.8229ms. (50a9e262)
+2019-09-22T15:28:11.1418779+07:00 0HLPV6R649OSL:00000001 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2019-09-22T15:28:11.4769530+07:00 0HLPV6R649OSL:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Products] AS [x]
+WHERE [x].[Status] = 1" (0723d8ff)
+2019-09-22T15:28:12.1165178+07:00 0HLPV6R649OSL:00000001 [INF] Executed DbCommand ("8"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2019-09-22T15:28:12.1300082+07:00 0HLPV6R649OSL:00000001 [INF] Executed DbCommand ("7"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [t].[Id0], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[ViewCount], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Status]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT [x0].[DateCreated], [x0].[Id], [x.ProductCategory0].[Id] AS [Id0]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE [x0].[Status] = 1
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id], [x.ProductCategory0].[Id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t] ON [x.ProductCategory.Products].[CategoryId] = [t].[Id0]
+ORDER BY [t].[DateCreated] DESC, [t].[Id], [t].[Id0]" (0723d8ff)
+2019-09-22T15:28:12.3484520+07:00 0HLPV6R649OSL:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Blogs] AS [x]
+WHERE [x].[Status] = 1" (0723d8ff)
+2019-09-22T15:28:12.3846212+07:00 0HLPV6R649OSL:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Image], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[DateCreated], [x].[DateModified], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [Blogs] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC, [x].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2019-09-22T15:28:12.3993549+07:00 0HLPV6R649OSL:00000001 [INF] Executed DbCommand ("7"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [x.BlogTags].[BlogId], [x.BlogTags].[TagId]
+FROM [BlogTags] AS [x.BlogTags]
+INNER JOIN (
+    SELECT [x0].[DateCreated], [x0].[Id]
+    FROM [Blogs] AS [x0]
+    WHERE [x0].[Status] = 1
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t] ON [x.BlogTags].[BlogId] = [t].[Id]
+ORDER BY [t].[DateCreated] DESC, [t].[Id]" (0723d8ff)
+2019-09-22T15:28:12.6348373+07:00 0HLPV6R649OSL:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-09-22T15:28:12.6491528+07:00 0HLPV6R649OSL:00000001 [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2019-09-22T15:28:12.8021977+07:00 0HLPV6R649OSL:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-09-22T15:28:12.8072431+07:00 0HLPV6R649OSL:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2019-09-22T15:28:12.8639320+07:00 0HLPV6R649OSL:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-09-22T15:28:12.8687478+07:00 0HLPV6R649OSL:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2019-09-22T15:28:13.4986793+07:00 0HLPV6R649OSP:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/images/logo.png   (ca22a1cb)
+2019-09-22T15:28:13.5046776+07:00 0HLPV6R649OSO:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/lib/notifyjs/dist/styles/metro/notify-metro.css   (ca22a1cb)
+2019-09-22T15:28:13.5191341+07:00 0HLPV6R649OSN:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/lib/font-awesome/css/font-awesome.css   (ca22a1cb)
+2019-09-22T15:28:13.5633874+07:00 0HLPV6R649OSL:00000001 [INF] Executed ViewResult - view "Index" executed in 2082.404ms. (f66409e9)
+2019-09-22T15:28:13.5803391+07:00 0HLPV6R649OSP:00000001 [INF] Sending file. Request path: '"/client-side/images/logo.png"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\images\logo.png"' (27b0a520)
+2019-09-22T15:28:13.6022168+07:00 0HLPV6R649OSP:00000001 [INF] Request finished in 93.4224ms 200 image/png (791a596a)
+2019-09-22T15:28:13.6095782+07:00 0HLPV6R649OSL:00000001 [INF] Executed action "CoreApp.Controllers.HomeController.Index (CoreApp)" in 4019.8556ms (afa2e885)
+2019-09-22T15:28:13.6172580+07:00 0HLPV6R649OSQ:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/images/banner-left.jpg   (ca22a1cb)
+2019-09-22T15:28:13.6235424+07:00 0HLPV6R649OSO:00000001 [INF] Sending file. Request path: '"/lib/notifyjs/dist/styles/metro/notify-metro.css"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\lib\notifyjs\dist\styles\metro\notify-metro.css"' (27b0a520)
+2019-09-22T15:28:13.6250818+07:00 0HLPV6R649OSN:00000001 [INF] Sending file. Request path: '"/lib/font-awesome/css/font-awesome.css"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\lib\font-awesome\css\font-awesome.css"' (27b0a520)
+2019-09-22T15:28:13.6307109+07:00 0HLPV6R649OSR:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/images/slider/slide-2.jpg   (ca22a1cb)
+2019-09-22T15:28:13.6365919+07:00 0HLPV6R649OSS:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/images/slider/slide-1.jpg   (ca22a1cb)
+2019-09-22T15:28:13.6483771+07:00 0HLPV6R649OST:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/style.css   (ca22a1cb)
+2019-09-22T15:28:13.6526897+07:00 0HLPV6R649OSL:00000001 [INF] Session started; Key:"b0552ef4-0996-70ea-21eb-13efed82e820", Id:"d2546ab6-8aa1-b10a-69d7-0173b4885846" (1d7cf8c0)
+2019-09-22T15:28:13.6561639+07:00 0HLPV6R649OSO:00000001 [INF] Request finished in 161.3762ms 200 text/css (791a596a)
+2019-09-22T15:28:13.6573478+07:00 0HLPV6R649OSN:00000001 [INF] Request finished in 161.6685ms 200 text/css (791a596a)
+2019-09-22T15:28:13.6697460+07:00 0HLPV6R649OSU:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/images/slider/slide-3.jpg   (ca22a1cb)
+2019-09-22T15:28:13.6715769+07:00 0HLPV6R649OSV:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/images/products/product-1.jpg   (ca22a1cb)
+2019-09-22T15:28:13.6812566+07:00 0HLPV6R649OST:00000001 [INF] Sending file. Request path: '"/client-side/style.css"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\style.css"' (27b0a520)
+2019-09-22T15:28:13.6863397+07:00 0HLPV6R649OT0:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/images/spinner-loading.gif   (ca22a1cb)
+2019-09-22T15:28:13.6880951+07:00 0HLPV6R649OST:00000001 [INF] Request finished in 39.5291ms 200 text/css (791a596a)
+2019-09-22T15:28:13.6942582+07:00 0HLPV6R649OT1:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20190724/t-shirt.jpg   (ca22a1cb)
+2019-09-22T15:28:13.6978283+07:00 0HLPV6R649OT2:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/images/brand1.png   (ca22a1cb)
+2019-09-22T15:28:13.6995846+07:00 0HLPV6R649OT0:00000001 [INF] Sending file. Request path: '"/client-side/images/spinner-loading.gif"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\images\spinner-loading.gif"' (27b0a520)
+2019-09-22T15:28:13.7059216+07:00 0HLPV6R649OT0:00000001 [INF] Request finished in 21.2583ms 200 image/gif (791a596a)
+2019-09-22T15:28:13.7074237+07:00 0HLPV6R649OT1:00000001 [INF] Sending file. Request path: '"/uploaded/images/20190724/t-shirt.jpg"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\uploaded\images\20190724\t-shirt.jpg"' (27b0a520)
+2019-09-22T15:28:13.7122007+07:00 0HLPV6R649OT3:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/js/main.js   (ca22a1cb)
+2019-09-22T15:28:13.7180888+07:00 0HLPV6R649OT1:00000001 [INF] Request finished in 19.3805ms 200 image/jpeg (791a596a)
+2019-09-22T15:28:13.7341111+07:00 0HLPV6R649OT4:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/images/brand2.png   (ca22a1cb)
+2019-09-22T15:28:13.7430171+07:00 0HLPV6R649OSL:00000001 [INF] Request finished in 5137.974ms 200 text/html; charset=utf-8 (791a596a)
+2019-09-22T15:28:13.7500561+07:00 0HLPV6R649OT5:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/js/jquery-ui.js   (ca22a1cb)
+2019-09-22T15:28:13.7585704+07:00 0HLPV6R649OT3:00000001 [INF] Sending file. Request path: '"/client-side/js/main.js"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\js\main.js"' (27b0a520)
+2019-09-22T15:28:13.7654250+07:00 0HLPV6R649OT6:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/images/brand3.png   (ca22a1cb)
+2019-09-22T15:28:13.7943117+07:00 0HLPV6R649OT4:00000001 [INF] Sending file. Request path: '"/client-side/images/brand2.png"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\images\brand2.png"' (27b0a520)
+2019-09-22T15:28:13.8007865+07:00 0HLPV6R649OT3:00000001 [INF] Request finished in 51.2044ms 200 application/javascript (791a596a)
+2019-09-22T15:28:13.8267287+07:00 0HLPV6R649OT4:00000001 [INF] Request finished in 75.9245ms 200 image/png (791a596a)
+2019-09-22T15:28:13.8378216+07:00 0HLPV6R649OT7:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/lib/bootstrap/dist/js/bootstrap.js   (ca22a1cb)
+2019-09-22T15:28:13.8473132+07:00 0HLPV6R649OT6:00000001 [INF] Sending file. Request path: '"/client-side/images/brand3.png"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\images\brand3.png"' (27b0a520)
+2019-09-22T15:28:13.8531250+07:00 0HLPV6R649OT8:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/lib/jquery/dist/jquery.js   (ca22a1cb)
+2019-09-22T15:28:13.8627674+07:00 0HLPV6R649OT6:00000001 [INF] Request finished in 97.4245ms 200 image/png (791a596a)
+2019-09-22T15:28:13.9030501+07:00 0HLPV6R649OT9:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/js/owl.carousel.min.js   (ca22a1cb)
+2019-09-22T15:28:13.9429333+07:00 0HLPV6R649OTA:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/images/brand6.png   (ca22a1cb)
+2019-09-22T15:28:13.9522709+07:00 0HLPV6R649OTB:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/images/brand4.png   (ca22a1cb)
+2019-09-22T15:28:13.9655798+07:00 0HLPV6R649OTA:00000001 [INF] Sending file. Request path: '"/client-side/images/brand6.png"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\images\brand6.png"' (27b0a520)
+2019-09-22T15:28:13.9710711+07:00 0HLPV6R649OTC:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/admin-app/shared/services.js?v=Ww-zrs-GfXwkYfhAQ1HXTzNOAXKpTV2LHPjNuOXmVRU   (ca22a1cb)
+2019-09-22T15:28:13.9741043+07:00 0HLPV6R649OTA:00000001 [INF] Request finished in 99.1026ms 200 image/png (791a596a)
+2019-09-22T15:28:13.9811084+07:00 0HLPV6R649OTD:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-app/shared/constants.js?v=bhEjx7jcPobIYP9Ukd6J2dsA0o14-prOGvZ8FILBn9E   (ca22a1cb)
+2019-09-22T15:28:13.9829680+07:00 0HLPV6R649OSM:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/lib/bootstrap/dist/css/bootstrap.css   (ca22a1cb)
+2019-09-22T15:28:14.0076170+07:00 0HLPV6R649OTC:00000001 [INF] Sending file. Request path: '"/admin-app/shared/services.js"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\admin-app\shared\services.js"' (27b0a520)
+2019-09-22T15:28:14.0153181+07:00 0HLPV6R649OTC:00000001 [INF] Request finished in 57.9261ms 200 application/javascript (791a596a)
+2019-09-22T15:28:14.0196682+07:00 0HLPV6R649OTE:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/lib/mustache/mustache.js   (ca22a1cb)
+2019-09-22T15:28:14.0312185+07:00 0HLPV6R649OTF:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-app/shared/messages.js?v=sknZRMXxiEho9oaMm5ccfyHwZLSJG1OfNJQ-Srxwups   (ca22a1cb)
+2019-09-22T15:28:14.0328144+07:00 0HLPV6R649OTG:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-app/controllers/base/index.js?v=fd2GgPcdJ4XKPmP7f9KAfDqxzZ0u6ZvmnZPt0Sde4e4   (ca22a1cb)
+2019-09-22T15:28:14.0408206+07:00 0HLPV6R649OTH:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-app/shared/app-core.js?v=wP66qewQFRfzBS_BGucPIdkpo6h2E199GdcY3EFYyHE   (ca22a1cb)
+2019-09-22T15:28:14.0448191+07:00 0HLPV6R649OTG:00000001 [INF] Sending file. Request path: '"/client-app/controllers/base/index.js"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-app\controllers\base\index.js"' (27b0a520)
+2019-09-22T15:28:14.0492317+07:00 0HLPV6R649OTF:00000001 [INF] Sending file. Request path: '"/client-app/shared/messages.js"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-app\shared\messages.js"' (27b0a520)
+2019-09-22T15:28:14.0568505+07:00 0HLPV6R649OTG:00000001 [INF] Request finished in 25.2618ms 200 application/javascript (791a596a)
+2019-09-22T15:28:14.0588966+07:00 0HLPV6R649OTF:00000001 [INF] Request finished in 33.7895ms 200 application/javascript (791a596a)
+2019-09-22T15:28:14.0638444+07:00 0HLPV6R649OTI:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/js/countdown.js   (ca22a1cb)
+2019-09-22T15:28:14.0672597+07:00 0HLPV6R649OTK:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/lib/notifyjs/dist/notify.js   (ca22a1cb)
+2019-09-22T15:28:14.0685572+07:00 0HLPV6R649OTH:00000001 [INF] Sending file. Request path: '"/client-app/shared/app-core.js"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-app\shared\app-core.js"' (27b0a520)
+2019-09-22T15:28:14.0765045+07:00 0HLPV6R649OTL:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/images/brand7.png   (ca22a1cb)
+2019-09-22T15:28:14.0836602+07:00 0HLPV6R649OTH:00000001 [INF] Request finished in 36.8213ms 200 application/javascript (791a596a)
+2019-09-22T15:28:14.0916856+07:00 0HLPV6R649OTJ:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/js/revolution-slider.js   (ca22a1cb)
+2019-09-22T15:28:14.1005749+07:00 0HLPV6R649OTM:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/images/brand8.png   (ca22a1cb)
+2019-09-22T15:28:14.1096940+07:00 0HLPV6R649OTI:00000001 [INF] Sending file. Request path: '"/client-side/js/countdown.js"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\js\countdown.js"' (27b0a520)
+2019-09-22T15:28:14.1149211+07:00 0HLPV6R649OTL:00000001 [INF] Sending file. Request path: '"/client-side/images/brand7.png"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\images\brand7.png"' (27b0a520)
+2019-09-22T15:28:14.1217716+07:00 0HLPV6R649OTI:00000001 [INF] Request finished in 50.7684ms 200 application/javascript (791a596a)
+2019-09-22T15:28:14.1280675+07:00 0HLPV6R649OTL:00000001 [INF] Request finished in 54.4882ms 200 image/png (791a596a)
+2019-09-22T15:28:14.1313760+07:00 0HLPV6R649OTK:00000001 [INF] Sending file. Request path: '"/lib/notifyjs/dist/notify.js"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\lib\notifyjs\dist\notify.js"' (27b0a520)
+2019-09-22T15:28:14.1353596+07:00 0HLPV6R649OTN:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/js/mobile-menu.js   (ca22a1cb)
+2019-09-22T15:28:14.1385887+07:00 0HLPV6R649OTK:00000001 [INF] Request finished in 71.0066ms 200 application/javascript (791a596a)
+2019-09-22T15:28:14.1470403+07:00 0HLPV6R649OTP:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/images/brand9.png   (ca22a1cb)
+2019-09-22T15:28:14.1533453+07:00 0HLPV6R649OTQ:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/images/brand11.png   (ca22a1cb)
+2019-09-22T15:28:14.1638023+07:00 0HLPV6R649OTO:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/images/brand10.png   (ca22a1cb)
+2019-09-22T15:28:14.1739932+07:00 0HLPV6R649OTP:00000001 [INF] Sending file. Request path: '"/client-side/images/brand9.png"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\images\brand9.png"' (27b0a520)
+2019-09-22T15:28:14.1833778+07:00 0HLPV6R649OTQ:00000001 [INF] Sending file. Request path: '"/client-side/images/brand11.png"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\images\brand11.png"' (27b0a520)
+2019-09-22T15:28:14.1877166+07:00 0HLPV6R649OTP:00000001 [INF] Request finished in 45.8779ms 200 image/png (791a596a)
+2019-09-22T15:28:14.1968455+07:00 0HLPV6R649OTQ:00000001 [INF] Request finished in 43.1189ms 200 image/png (791a596a)
+2019-09-22T15:28:14.2013913+07:00 0HLPV6R649OTR:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-app/controllers/home/index.js   (ca22a1cb)
+2019-09-22T15:28:14.2282537+07:00 0HLPV6R649OTS:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/images/brand5.png   (ca22a1cb)
+2019-09-22T15:28:14.2368855+07:00 0HLPV6R649OTN:00000001 [INF] Sending file. Request path: '"/client-side/js/mobile-menu.js"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\js\mobile-menu.js"' (27b0a520)
+2019-09-22T15:28:14.2467067+07:00 0HLPV6R649OTO:00000001 [INF] Sending file. Request path: '"/client-side/images/brand10.png"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\images\brand10.png"' (27b0a520)
+2019-09-22T15:28:14.2499050+07:00 0HLPV6R649OTN:00000001 [INF] Request finished in 117.2684ms 200 application/javascript (791a596a)
+2019-09-22T15:28:14.2546594+07:00 0HLPV6R649OTO:00000001 [INF] Request finished in 124.9066ms 200 image/png (791a596a)
+2019-09-22T15:28:14.3034971+07:00 0HLPV6R649OTT:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/lib/notifyjs/dist/styles/metro/notify-metro.js   (ca22a1cb)
+2019-09-22T15:28:14.5377721+07:00 0HLPV6R649OTS:00000001 [INF] Sending file. Request path: '"/client-side/images/brand5.png"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\images\brand5.png"' (27b0a520)
+2019-09-22T15:28:14.5567723+07:00 0HLPV6R649OTR:00000001 [INF] Sending file. Request path: '"/client-app/controllers/home/index.js"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-app\controllers\home\index.js"' (27b0a520)
+2019-09-22T15:28:14.5934871+07:00 0HLPV6R649OTS:00000001 [INF] Request finished in 340.8709ms 200 image/png (791a596a)
+2019-09-22T15:28:14.5993930+07:00 0HLPV6R649OT2:00000001 [INF] Sending file. Request path: '"/client-side/images/brand1.png"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\images\brand1.png"' (27b0a520)
+2019-09-22T15:28:14.6071486+07:00 0HLPV6R649OTR:00000001 [INF] Request finished in 368.9903ms 200 application/javascript (791a596a)
+2019-09-22T15:28:14.6132887+07:00 0HLPV6R649OT9:00000001 [INF] Sending file. Request path: '"/client-side/js/owl.carousel.min.js"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\js\owl.carousel.min.js"' (27b0a520)
+2019-09-22T15:28:14.6190271+07:00 0HLPV6R649OT2:00000001 [INF] Request finished in 908.8658ms 200 image/png (791a596a)
+2019-09-22T15:28:14.6262887+07:00 0HLPV6R649OT9:00000001 [INF] Request finished in 748.7656ms 200 application/javascript (791a596a)
+2019-09-22T15:28:14.6392386+07:00 0HLPV6R649OTE:00000001 [INF] Sending file. Request path: '"/lib/mustache/mustache.js"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\lib\mustache\mustache.js"' (27b0a520)
+2019-09-22T15:28:14.6849631+07:00 0HLPV6R649OTM:00000001 [INF] Sending file. Request path: '"/client-side/images/brand8.png"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\images\brand8.png"' (27b0a520)
+2019-09-22T15:28:14.7033317+07:00 0HLPV6R649OTE:00000001 [INF] Request finished in 631.5533ms 200 application/javascript (791a596a)
+2019-09-22T15:28:14.7109066+07:00 0HLPV6R649OTM:00000001 [INF] Request finished in 603.1555ms 200 image/png (791a596a)
+2019-09-22T15:28:14.7143717+07:00 0HLPV6R649OTD:00000001 [INF] Sending file. Request path: '"/client-app/shared/constants.js"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-app\shared\constants.js"' (27b0a520)
+2019-09-22T15:28:14.7295080+07:00 0HLPV6R649OSV:00000001 [INF] Sending file. Request path: '"/client-side/images/products/product-1.jpg"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\images\products\product-1.jpg"' (27b0a520)
+2019-09-22T15:28:14.7333401+07:00 0HLPV6R649OTB:00000001 [INF] Sending file. Request path: '"/client-side/images/brand4.png"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\images\brand4.png"' (27b0a520)
+2019-09-22T15:28:14.7920724+07:00 0HLPV6R649OTD:00000001 [INF] Request finished in 740.2024ms 200 application/javascript (791a596a)
+2019-09-22T15:28:14.8157415+07:00 0HLPV6R649OTT:00000001 [INF] Sending file. Request path: '"/lib/notifyjs/dist/styles/metro/notify-metro.js"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\lib\notifyjs\dist\styles\metro\notify-metro.js"' (27b0a520)
+2019-09-22T15:28:14.8189970+07:00 0HLPV6R649OTB:00000001 [INF] Request finished in 792.7751ms 200 image/png (791a596a)
+2019-09-22T15:28:14.8223638+07:00 0HLPV6R649OTT:00000001 [INF] Request finished in 563.5696ms 200 application/javascript (791a596a)
+2019-09-22T15:28:14.8289815+07:00 0HLPV6R649OSV:00000001 [INF] Request finished in 1070.5483ms 200 image/jpeg (791a596a)
+2019-09-22T15:28:14.8345410+07:00 0HLPV6R649OTO:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/css/blog.css   (ca22a1cb)
+2019-09-22T15:28:14.8414180+07:00 0HLPV6R649OTS:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/css/simple-line-icons.css   (ca22a1cb)
+2019-09-22T15:28:14.8473626+07:00 0HLPV6R649OT5:00000001 [INF] Sending file. Request path: '"/client-side/js/jquery-ui.js"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\js\jquery-ui.js"' (27b0a520)
+2019-09-22T15:28:14.8515786+07:00 0HLPV6R649OTC:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/css/pe-icon-7-stroke.min.css   (ca22a1cb)
+2019-09-22T15:28:14.8578751+07:00 0HLPV6R649OT5:00000001 [INF] Request finished in 1129.1065ms 200 application/javascript (791a596a)
+2019-09-22T15:28:14.8619053+07:00 0HLPV6R649OSQ:00000001 [INF] Sending file. Request path: '"/client-side/images/banner-left.jpg"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\images\banner-left.jpg"' (27b0a520)
+2019-09-22T15:28:14.8662632+07:00 0HLPV6R649OSO:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/css/shortcode.css   (ca22a1cb)
+2019-09-22T15:28:14.8757009+07:00 0HLPV6R649OTO:00000002 [INF] Sending file. Request path: '"/client-side/css/blog.css"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\css\blog.css"' (27b0a520)
+2019-09-22T15:28:14.8816865+07:00 0HLPV6R649OTS:00000002 [INF] Sending file. Request path: '"/client-side/css/simple-line-icons.css"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\css\simple-line-icons.css"' (27b0a520)
+2019-09-22T15:28:14.8869321+07:00 0HLPV6R649OTO:00000002 [INF] Request finished in 53.3581ms 200 text/css (791a596a)
+2019-09-22T15:28:14.8902089+07:00 0HLPV6R649OTS:00000002 [INF] Request finished in 59.2791ms 200 text/css (791a596a)
+2019-09-22T15:28:14.8972873+07:00 0HLPV6R649OTC:00000002 [INF] Sending file. Request path: '"/client-side/css/pe-icon-7-stroke.min.css"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\css\pe-icon-7-stroke.min.css"' (27b0a520)
+2019-09-22T15:28:14.9011433+07:00 0HLPV6R649OT4:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/css/revolution-slider.css   (ca22a1cb)
+2019-09-22T15:28:14.9048262+07:00 0HLPV6R649OTC:00000002 [INF] Request finished in 62.8944ms 200 text/css (791a596a)
+2019-09-22T15:28:14.9126954+07:00 0HLPV6R649OSQ:00000001 [INF] Request finished in 1256.4685ms 200 image/jpeg (791a596a)
+2019-09-22T15:28:14.9174180+07:00 0HLPV6R649OTG:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/css/jquery-ui.css   (ca22a1cb)
+2019-09-22T15:28:14.9357597+07:00 0HLPV6R649OT0:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/css/responsive.css   (ca22a1cb)
+2019-09-22T15:28:14.9433065+07:00 0HLPV6R649OSO:00000002 [INF] Sending file. Request path: '"/client-side/css/shortcode.css"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\css\shortcode.css"' (27b0a520)
+2019-09-22T15:28:14.9471776+07:00 0HLPV6R649OTK:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/css/owl.carousel.css   (ca22a1cb)
+2019-09-22T15:28:14.9508877+07:00 0HLPV6R649OSO:00000002 [INF] Request finished in 83.95ms 200 text/css (791a596a)
+2019-09-22T15:28:14.9547050+07:00 0HLPV6R649OTG:00000002 [INF] Sending file. Request path: '"/client-side/css/jquery-ui.css"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\css\jquery-ui.css"' (27b0a520)
+2019-09-22T15:28:14.9646950+07:00 0HLPV6R649OTR:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/css/bootstrap.min.css   (ca22a1cb)
+2019-09-22T15:28:14.9647817+07:00 0HLPV6R649OTG:00000002 [INF] Request finished in 49.8251ms 200 text/css (791a596a)
+2019-09-22T15:28:14.9680442+07:00 0HLPV6R649OT0:00000002 [INF] Sending file. Request path: '"/client-side/css/responsive.css"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\css\responsive.css"' (27b0a520)
+2019-09-22T15:28:14.9742673+07:00 0HLPV6R649OTK:00000002 [INF] Sending file. Request path: '"/client-side/css/owl.carousel.css"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\css\owl.carousel.css"' (27b0a520)
+2019-09-22T15:28:14.9779149+07:00 0HLPV6R649OTF:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/css/animate.css   (ca22a1cb)
+2019-09-22T15:28:14.9856483+07:00 0HLPV6R649OT0:00000002 [INF] Request finished in 56.6179ms 200 text/css (791a596a)
+2019-09-22T15:28:14.9933777+07:00 0HLPV6R649OTK:00000002 [INF] Request finished in 41.7016ms 200 text/css (791a596a)
+2019-09-22T15:28:14.9990995+07:00 0HLPV6R649OTN:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/css/shortcodes/pricing-table.css   (ca22a1cb)
+2019-09-22T15:28:15.0019393+07:00 0HLPV6R649OT3:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/css/shortcodes/shortcodes.css   (ca22a1cb)
+2019-09-22T15:28:15.0051037+07:00 0HLPV6R649OSN:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/css/shortcodes/post.css   (ca22a1cb)
+2019-09-22T15:28:15.0093449+07:00 0HLPV6R649OST:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/css/font-awesome.min.css   (ca22a1cb)
+2019-09-22T15:28:15.0274605+07:00 0HLPV6R649OTN:00000002 [INF] Sending file. Request path: '"/client-side/css/shortcodes/pricing-table.css"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\css\shortcodes\pricing-table.css"' (27b0a520)
+2019-09-22T15:28:15.0331228+07:00 0HLPV6R649OSN:00000002 [INF] Sending file. Request path: '"/client-side/css/shortcodes/post.css"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\css\shortcodes\post.css"' (27b0a520)
+2019-09-22T15:28:15.0370749+07:00 0HLPV6R649OSL:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/css/flexslider.css   (ca22a1cb)
+2019-09-22T15:28:15.0419959+07:00 0HLPV6R649OSN:00000002 [INF] Request finished in 34.3397ms 200 text/css (791a596a)
+2019-09-22T15:28:15.0465204+07:00 0HLPV6R649OTP:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/css/owl.transitions.css   (ca22a1cb)
+2019-09-22T15:28:15.0545360+07:00 0HLPV6R649OTN:00000002 [INF] Request finished in 34.5224ms 200 text/css (791a596a)
+2019-09-22T15:28:15.0623373+07:00 0HLPV6R649OTL:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/css/shortcodes/featured-box.css   (ca22a1cb)
+2019-09-22T15:28:15.0641239+07:00 0HLPV6R649OTH:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/css/quick_view_popup.css   (ca22a1cb)
+2019-09-22T15:28:15.0700581+07:00 0HLPV6R649OSP:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/css/style.css   (ca22a1cb)
+2019-09-22T15:28:15.0733080+07:00 0HLPV6R649OSL:00000002 [INF] Sending file. Request path: '"/client-side/css/flexslider.css"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\css\flexslider.css"' (27b0a520)
+2019-09-22T15:28:15.0900394+07:00 0HLPV6R649OSL:00000002 [INF] Request finished in 45.7176ms 200 text/css (791a596a)
+2019-09-22T15:28:15.1114899+07:00 0HLPV6R649OTL:00000002 [INF] Sending file. Request path: '"/client-side/css/shortcodes/featured-box.css"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\css\shortcodes\featured-box.css"' (27b0a520)
+2019-09-22T15:28:15.1272450+07:00 0HLPV6R649OT1:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/css/shortcodes/tooltip.css   (ca22a1cb)
+2019-09-22T15:28:15.2520674+07:00 0HLPV6R649OTL:00000002 [INF] Request finished in 65.2507ms 200 text/css (791a596a)
+2019-09-22T15:28:15.2571912+07:00 0HLPV6R649OSS:00000001 [INF] Sending file. Request path: '"/client-side/images/slider/slide-1.jpg"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\images\slider\slide-1.jpg"' (27b0a520)
+2019-09-22T15:28:15.2640673+07:00 0HLPV6R649OTF:00000002 [INF] Sending file. Request path: '"/client-side/css/animate.css"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\css\animate.css"' (27b0a520)
+2019-09-22T15:28:15.2683362+07:00 0HLPV6R649OSS:00000001 [INF] Request finished in 1624.5687ms 200 image/jpeg (791a596a)
+2019-09-22T15:28:15.2743436+07:00 0HLPV6R649OTF:00000002 [INF] Request finished in 299.1459ms 200 text/css (791a596a)
+2019-09-22T15:28:15.2790454+07:00 0HLPV6R649OST:00000002 [INF] Sending file. Request path: '"/client-side/css/font-awesome.min.css"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\css\font-awesome.min.css"' (27b0a520)
+2019-09-22T15:28:15.2850077+07:00 0HLPV6R649OT7:00000001 [INF] Sending file. Request path: '"/lib/bootstrap/dist/js/bootstrap.js"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\lib\bootstrap\dist\js\bootstrap.js"' (27b0a520)
+2019-09-22T15:28:15.2896094+07:00 0HLPV6R649OST:00000002 [INF] Request finished in 282.2805ms 200 text/css (791a596a)
+2019-09-22T15:28:15.3015340+07:00 0HLPV6R649OT7:00000001 [INF] Request finished in 1458.4291ms 200 application/javascript (791a596a)
+2019-09-22T15:28:15.3516532+07:00 0HLPV6R649OT4:00000002 [INF] Sending file. Request path: '"/client-side/css/revolution-slider.css"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\css\revolution-slider.css"' (27b0a520)
+2019-09-22T15:28:15.3639795+07:00 0HLPV6R649OTP:00000002 [INF] Sending file. Request path: '"/client-side/css/owl.transitions.css"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\css\owl.transitions.css"' (27b0a520)
+2019-09-22T15:28:15.3687780+07:00 0HLPV6R649OT1:00000002 [INF] Sending file. Request path: '"/client-side/css/shortcodes/tooltip.css"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\css\shortcodes\tooltip.css"' (27b0a520)
+2019-09-22T15:28:15.3723893+07:00 0HLPV6R649OTP:00000002 [INF] Request finished in 334.5747ms 200 text/css (791a596a)
+2019-09-22T15:28:15.4350319+07:00 0HLPV6R649OT4:00000002 [INF] Request finished in 463.5982ms 200 text/css (791a596a)
+2019-09-22T15:28:15.4447898+07:00 0HLPV6R649OT3:00000002 [INF] Sending file. Request path: '"/client-side/css/shortcodes/shortcodes.css"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\css\shortcodes\shortcodes.css"' (27b0a520)
+2019-09-22T15:28:15.4470131+07:00 0HLPV6R649OT1:00000002 [INF] Request finished in 282.5686ms 200 text/css (791a596a)
+2019-09-22T15:28:15.4751457+07:00 0HLPV6R649OT3:00000002 [INF] Request finished in 447.6783ms 200 text/css (791a596a)
+2019-09-22T15:28:15.4805150+07:00 0HLPV6R649OTR:00000002 [INF] Sending file. Request path: '"/client-side/css/bootstrap.min.css"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\css\bootstrap.min.css"' (27b0a520)
+2019-09-22T15:28:15.5046047+07:00 0HLPV6R649OTH:00000002 [INF] Sending file. Request path: '"/client-side/css/quick_view_popup.css"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\css\quick_view_popup.css"' (27b0a520)
+2019-09-22T15:28:15.5242118+07:00 0HLPV6R649OSM:00000002 [INF] Sending file. Request path: '"/lib/bootstrap/dist/css/bootstrap.css"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\lib\bootstrap\dist\css\bootstrap.css"' (27b0a520)
+2019-09-22T15:28:15.5330431+07:00 0HLPV6R649OSR:00000001 [INF] Sending file. Request path: '"/client-side/images/slider/slide-2.jpg"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\images\slider\slide-2.jpg"' (27b0a520)
+2019-09-22T15:28:15.5384544+07:00 0HLPV6R649OSM:00000002 [INF] Request finished in 1552.1834ms 200 text/css (791a596a)
+2019-09-22T15:28:15.5634468+07:00 0HLPV6R649OSR:00000001 [INF] Request finished in 1906.6834ms 200 image/jpeg (791a596a)
+2019-09-22T15:28:15.5979846+07:00 0HLPV6R649OTR:00000002 [INF] Request finished in 529.441ms 200 text/css (791a596a)
+2019-09-22T15:28:15.6241118+07:00 0HLPV6R649OTH:00000002 [INF] Request finished in 450.0715ms 200 text/css (791a596a)
+2019-09-22T15:28:15.6731737+07:00 0HLPV6R649OSU:00000001 [INF] Sending file. Request path: '"/client-side/images/slider/slide-3.jpg"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\images\slider\slide-3.jpg"' (27b0a520)
+2019-09-22T15:28:15.6774908+07:00 0HLPV6R649OTJ:00000001 [INF] Sending file. Request path: '"/client-side/js/revolution-slider.js"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\js\revolution-slider.js"' (27b0a520)
+2019-09-22T15:28:15.6809212+07:00 0HLPV6R649OSU:00000001 [INF] Request finished in 2015.9122ms 200 image/jpeg (791a596a)
+2019-09-22T15:28:15.6857348+07:00 0HLPV6R649OTJ:00000001 [INF] Request finished in 1617.2064ms 200 application/javascript (791a596a)
+2019-09-22T15:28:15.6887348+07:00 0HLPV6R649OT8:00000001 [INF] Sending file. Request path: '"/lib/jquery/dist/jquery.js"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\lib\jquery\dist\jquery.js"' (27b0a520)
+2019-09-22T15:28:15.6973324+07:00 0HLPV6R649OT8:00000001 [INF] Request finished in 1860.042ms 200 application/javascript (791a596a)
+2019-09-22T15:28:15.7385250+07:00 0HLPV6R649OSP:00000002 [INF] Sending file. Request path: '"/client-side/css/style.css"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\css\style.css"' (27b0a520)
+2019-09-22T15:28:15.7857166+07:00 0HLPV6R649OSP:00000002 [INF] Request finished in 674.1848ms 200 text/css (791a596a)
+2019-09-22T15:28:16.1326534+07:00 0HLPV6R649OTQ:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/images/arrow-d.png   (ca22a1cb)
+2019-09-22T15:28:16.1511342+07:00 0HLPV6R649OTQ:00000002 [INF] Sending file. Request path: '"/client-side/images/arrow-d.png"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\images\arrow-d.png"' (27b0a520)
+2019-09-22T15:28:16.1621215+07:00 0HLPV6R649OTQ:00000002 [INF] Request finished in 30.2988ms 200 image/png (791a596a)
+2019-09-22T15:28:16.7622616+07:00 0HLPV6R649OTI:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/fonts/font-awesome/fontawesome-webfont.woff2?v=4.7.0   (ca22a1cb)
+2019-09-22T15:28:16.7739242+07:00 0HLPV6R649OTA:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client-side/fonts/simple-line-icons/Simple-Line-Icons.woff2?v=2.4.0   (ca22a1cb)
+2019-09-22T15:28:16.7889260+07:00 0HLPV6R649OT6:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/   (ca22a1cb)
+2019-09-22T15:28:16.8453825+07:00 0HLPV6R649OTA:00000002 [INF] Sending file. Request path: '"/client-side/fonts/simple-line-icons/Simple-Line-Icons.woff2"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\fonts\simple-line-icons\Simple-Line-Icons.woff2"' (27b0a520)
+2019-09-22T15:28:16.9955975+07:00 0HLPV6R649OT6:00000002 [INF] Route matched with "{action = \"Index\", controller = \"Home\", area = \"\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index()" on controller "CoreApp.Controllers.HomeController" ("CoreApp"). (122b2fdf)
+2019-09-22T15:28:17.4511111+07:00 0HLPV6R649OTA:00000002 [INF] Request finished in 92.9113ms 200 font/woff2 (791a596a)
+2019-09-22T15:28:17.6488145+07:00 0HLPV6R649OT6:00000002 [INF] Executing action method "CoreApp.Controllers.HomeController.Index (CoreApp)" - Validation state: Valid (dad538d7)
+2019-09-22T15:28:17.7514854+07:00 0HLPV6R649OTI:00000002 [INF] Sending file. Request path: '"/client-side/fonts/font-awesome/fontawesome-webfont.woff2"'. Physical path: '"C:\Projects\CoreApp\CoreApp\wwwroot\client-side\fonts\font-awesome\fontawesome-webfont.woff2"' (27b0a520)
+2019-09-22T15:28:17.7594203+07:00 0HLPV6R649OT6:00000002 [INF] Entity Framework Core "2.1.11-servicing-32099" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=CoreApp.Data.EF " (9958f5bb)
+2019-09-22T15:28:17.7662479+07:00 0HLPV6R649OTI:00000002 [INF] Request finished in 1048.5013ms 200 font/woff2 (791a596a)
+2019-09-22T15:28:17.7777392+07:00 0HLPV6R649OT6:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [c].[Id], [c].[Name], [c].[Description], [c].[ParentId], [c].[HomeOrder], [c].[Image], [c].[HomeFlag], [c].[DateCreated], [c].[DateModified], [c].[SortOrder], [c].[Status], [c].[SeoPageTitle], [c].[SeoAlias], [c].[SeoKeywords], [c].[SeoDescription]
+FROM [ProductCategories] AS [c]
+WHERE [c].[HomeFlag] = 1
+ORDER BY [c].[HomeOrder], [c].[Id]" (0723d8ff)
+2019-09-22T15:28:17.7862753+07:00 0HLPV6R649OT6:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) AND ([x].[HotFlag] = 1)
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2019-09-22T15:28:17.7944856+07:00 0HLPV6R649OT6:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2019-09-22T15:28:17.8025631+07:00 0HLPV6R649OT6:00000002 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [t].[Id0], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[ViewCount], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Status]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x0].[DateCreated], [x0].[Id], [x.ProductCategory0].[Id] AS [Id0]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE [x0].[Status] = 1
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id], [x.ProductCategory0].[Id]
+) AS [t] ON [x.ProductCategory.Products].[CategoryId] = [t].[Id0]
+ORDER BY [t].[DateCreated] DESC, [t].[Id], [t].[Id0]" (0723d8ff)
+2019-09-22T15:28:17.8163722+07:00 0HLPV6R649OT6:00000002 [INF] Executed DbCommand ("6"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[Image], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[DateCreated], [x].[DateModified], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [Blogs] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC, [x].[Id]" (0723d8ff)
+2019-09-22T15:28:17.8236634+07:00 0HLPV6R649OT6:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [x.BlogTags].[BlogId], [x.BlogTags].[TagId]
+FROM [BlogTags] AS [x.BlogTags]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x0].[DateCreated], [x0].[Id]
+    FROM [Blogs] AS [x0]
+    WHERE [x0].[Status] = 1
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id]
+) AS [t] ON [x.BlogTags].[BlogId] = [t].[Id]
+ORDER BY [t].[DateCreated] DESC, [t].[Id]" (0723d8ff)
+2019-09-22T15:28:17.8306506+07:00 0HLPV6R649OT6:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Image], [x].[Url], [x].[DisplayOrder], [x].[Status], [x].[Content], [x].[GroupAlias]
+FROM [Slides] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)" (0723d8ff)
+2019-09-22T15:28:17.8416983+07:00 0HLPV6R649OT6:00000002 [INF] Executed action method "CoreApp.Controllers.HomeController.Index (CoreApp)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 183.0698ms. (50a9e262)
+2019-09-22T15:28:17.8473582+07:00 0HLPV6R649OT6:00000002 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2019-09-22T15:28:17.8675611+07:00 0HLPV6R649OT6:00000002 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Products] AS [x]
+WHERE [x].[Status] = 1" (0723d8ff)
+2019-09-22T15:28:17.8830368+07:00 0HLPV6R649OT6:00000002 [INF] Executed DbCommand ("8"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2019-09-22T15:28:17.8954027+07:00 0HLPV6R649OT6:00000002 [INF] Executed DbCommand ("6"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [t].[Id0], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[ViewCount], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Status]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT [x0].[DateCreated], [x0].[Id], [x.ProductCategory0].[Id] AS [Id0]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE [x0].[Status] = 1
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id], [x.ProductCategory0].[Id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t] ON [x.ProductCategory.Products].[CategoryId] = [t].[Id0]
+ORDER BY [t].[DateCreated] DESC, [t].[Id], [t].[Id0]" (0723d8ff)
+2019-09-22T15:28:17.9425904+07:00 0HLPV6R649OT6:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Blogs] AS [x]
+WHERE [x].[Status] = 1" (0723d8ff)
+2019-09-22T15:28:17.9617154+07:00 0HLPV6R649OT6:00000002 [INF] Executed DbCommand ("4"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Image], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[DateCreated], [x].[DateModified], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [Blogs] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC, [x].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2019-09-22T15:28:17.9700936+07:00 0HLPV6R649OT6:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [x.BlogTags].[BlogId], [x.BlogTags].[TagId]
+FROM [BlogTags] AS [x.BlogTags]
+INNER JOIN (
+    SELECT [x0].[DateCreated], [x0].[Id]
+    FROM [Blogs] AS [x0]
+    WHERE [x0].[Status] = 1
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t] ON [x.BlogTags].[BlogId] = [t].[Id]
+ORDER BY [t].[DateCreated] DESC, [t].[Id]" (0723d8ff)
+2019-09-22T15:28:18.0014441+07:00 0HLPV6R649OT6:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-09-22T15:28:18.0111022+07:00 0HLPV6R649OT6:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2019-09-22T15:28:18.1259187+07:00 0HLPV6R649OT6:00000002 [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-09-22T15:28:18.2887187+07:00 0HLPV6R649OT6:00000002 [INF] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2019-09-22T15:28:18.3834750+07:00 0HLPV6R649OT6:00000002 [INF] Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-09-22T15:28:18.3953212+07:00 0HLPV6R649OT6:00000002 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2019-09-22T15:28:18.4216366+07:00 0HLPV6R649OT6:00000002 [INF] Executed ViewResult - view "Index" executed in 556.8395ms. (f66409e9)
+2019-09-22T15:28:18.4379503+07:00 0HLPV6R649OT6:00000002 [INF] Executed action "CoreApp.Controllers.HomeController.Index (CoreApp)" in 1435.3355ms (afa2e885)
+2019-09-22T15:28:18.4498701+07:00 0HLPV6R649OT6:00000002 [INF] Request finished in 1686.0893ms 200 text/html; charset=utf-8 (791a596a)

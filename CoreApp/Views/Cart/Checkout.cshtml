@@ -1,0 +1,211 @@
+﻿@model CheckoutViewModel
+@{
+    ViewData["Title"] = "Checkout";
+    var checkOut = ViewData["Success"];
+    var isCheckoutSuccess = (checkOut != null) && ((bool)checkOut == true);
+}
+@using CoreApp.Utilities.Extensions
+<!-- Breadcrumbs -->
+
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    <li class="home"> <a title="Go to Home Page" href="/">Trang chủ</a><span>&raquo;</span></li>
+                    <li><strong>Thanh toán</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs End -->
+<!-- Main Container -->
+<section class="main-container col2-right-layout">
+    <div class="main container">
+        <div class="row">
+            <div class="col-main col-sm-12 col-xs-12">
+                <div class="page-title">
+                    <h2>Thanh toán</h2>
+                </div>
+                <div class="page-content checkout-page">
+                    @if (checkOut != null)
+                    {
+                        if (isCheckoutSuccess == true)
+                        {
+                            <div class="alert alert-success">
+                                Cảm ơn bạn đã đặt hàng. Chúng tôi sẽ sớm xác nhận đơn hàng của bạn.
+                            </div>
+
+                        }
+                        else
+                        {
+                            <div class="alert alert-danger">
+                                Đã có vấn đề trong quá trình xử lý đơn hàng. Liên hệ với quản trị viên để biết thêm chi tiết
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        if (Model.Carts == null)
+                        {
+                            <div class="alert alert-danger">
+                                Đã có vấn đề trong quá trình xử lý đơn hàng. Liên hệ với quản trị viên để biết thêm chi tiết
+                            </div>
+                        }
+                        else
+                        {
+                            <form action="/thanh-toan.html" method="post">
+                                @Html.AntiForgeryToken()
+                                <h4 class="checkout-sep">1. Phương thức thanh toán</h4>
+                                <div class="box-border">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <h5>Thanh toán với tư cách là khách hoặc đăng ký</h5>
+                                            <p>Đăng ký với chúng tôi để thuận tiện trong tương lai:</p>
+                                            <br>
+                                            <h4>Đăng ký và tiết kiệm thời gian!</h4>
+                                            <p>Đăng ký với chúng tôi để thuận tiện trong tương lai:</p>
+                                            <p><i class="fa fa-check-circle text-primary"></i> Nhanh chóng và dễ dàng kiểm tra</p>
+                                            <p><i class="fa fa-check-circle text-primary"></i> Dễ dàng truy cập vào lịch sử đặt hàng và trạng thái của bạn</p>
+                                            <button class="button" onclick="window.location.href='/register.html'"><i class="fa fa-angle-double-right"></i>&nbsp; <span>Đăng ký</span></button>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h5>Đăng nhập</h5>
+                                            <p>Bạn đã có tài khoản? Vui lòng đăng nhập bên dưới:</p>
+                                            <button class="button" onclick="window.location.href='/login.html'"><i class="icon-login"></i>&nbsp; <span>Đăng nhập</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h4 class="checkout-sep">2. Thông tin thanh toán</h4>
+                                <div class="box-border">
+                                    <ul>
+                                        <li class="row">
+                                            <div class="col-sm-6">
+                                                <label class="required">Họ và tên</label>
+                                                <input class="input form-control" type="text" asp-for="CustomerName">
+                                                <span asp-validation-for="CustomerName" class="text-danger"></span>
+                                            </div>
+                                            <!--/ [col] -->
+                                            <div class="col-sm-6">
+                                                <label class="required">Điện thoại</label>
+                                                <input class="input form-control" type="text" asp-for="CustomerMobile">
+                                                <span asp-validation-for="CustomerMobile" class="text-danger"></span>
+                                            </div>
+                                        </li>
+                                        <!--/ .row -->
+
+                                        <li class="row">
+                                            <div class="col-xs-12">
+                                                <label class="required">Địa chỉ</label>
+                                                <input class="input form-control" type="text" asp-for="CustomerAddress">
+                                                <span asp-validation-for="CustomerAddress" class="text-danger"></span>
+                                            </div>
+                                            <!--/ [col] -->
+                                        </li>
+                                        <!--/ .row -->
+
+
+                                        <li class="row">
+                                            <div class="col-sm-12">
+                                                <label class="required">Chú ý</label>
+                                                <input class="input form-control" type="text" asp-for="CustomerMessage">
+                                                <span asp-validation-for="CustomerAddress" class="text-danger"></span>
+
+                                            </div>
+                                            <!--/ [col] -->
+                                        </li>
+                                        <!--/ .row -->
+
+
+                                    </ul>
+                                </div>
+                                <h4 class="checkout-sep">3. Phương thức thanh toán</h4>
+                                <div class="box-border">
+                                    <ul>
+                                        @for (int i = 0; i < Model.PaymentMethods.Count; i++)
+                                        {
+                                            <li>
+                                                <label asp-for="@Model.PaymentMethods[i].Value">
+                                                    @if (Model.PaymentMethods[i].Name == Model.PaymentMethod.GetDescription())
+                                                    {
+                                                        <input type="radio" name="paymentMethod" checked="checked" asp-for="PaymentMethod" value="@Model.PaymentMethods[i].Value">
+                                                        @Model.PaymentMethods[i].Name
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="radio" name="paymentMethod" asp-for="PaymentMethod" value="@Model.PaymentMethods[i].Value">
+                                                        @Model.PaymentMethods[i].Name
+                                                    }
+
+
+                                                </label>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                                <h4 class="checkout-sep last">4. Đơn hàng</h4>
+                                <div class="box-border">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered cart_summary">
+                                            <thead>
+                                                <tr>
+                                                    <th class="cart_product">Sản phẩm</th>
+                                                    <th>Mô tả</th>
+                                                    <th>Giá</th>
+                                                    <th>Số lượng</th>
+                                                    <th>Tổng</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model.Carts)
+                                                {
+                                                    <tr>
+                                                        <td class="cart_product"><a href="/@item.Product.SeoAlias-p.@(item.Product.Id).html"><img src="@item.Product.Image" alt="@item.Product.Name"></a></td>
+                                                        <td class="cart_description">
+                                                            <p class="product-name"><a href="/@item.Product.SeoAlias-p.@(item.Product.Id).html">@item.Product.Name </a></p>
+                                                            <small><a href="#">Color : @item.Color.Name</a></small><br>
+                                                            <small><a href="#">Size : @item.Size.Name</a></small>
+                                                        </td>
+                                                        <td class="price"><span>@item.Price.ToString("N0") </span></td>
+                                                        <td class="qty">@item.Quantity</td>
+                                                        <td class="price"><span>@((item.Price * item.Quantity).ToString("N0")) </span></td>
+                                                    </tr>
+
+                                                }
+
+
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <td colspan="3"><strong>Tổng tiền</strong></td>
+                                                    <td colspan="2"><strong>@Model.Carts.Sum(x => x.Quantity * x.Price).ToString("N0") </strong></td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                    @*<div>
+                                        <recaptcha />
+                                        <span class="text-danger" id="recaptchaErrorMessage"></span>
+                                    </div>*@
+                                    <button type="button" class="button" onclick="window.location.href='/cart.html'"><span>Trở về giỏ hàng</span></button>
+
+                                    <button type="submit" class="button pull-right"><span>Đặt hàng</span></button>
+                                </div>
+                            </form>
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Main Container End -->
+
+@*@section Scripts {
+
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <recaptcha-script validation-message-element-id="recaptchaErrorMessage" jquery-validation="true" />
+}*@

@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@using Microsoft.AspNetCore.Authorization
+@using CoreApp.Authorization
+@inject IAuthorizationService AuthorizationService
+@section Styles{
+
+    <link href="~/lib/ckeditor/skins/moono/editor.css" rel="stylesheet" />
+}
+
+@section Scripts{
+    <script src="~/lib/ckeditor/ckeditor.js"></script>
+    <script src="~/admin-app/controllers/blog/index.js" asp-append-version="true"></script>
+}
+
+<div class="page-title">
+       
+        <div class="title_left">
+            <h2>Danh sách bài viết</h2>
+        </div>
+
+        <div class="title_right">
+            <div class=" col-xl-11 col-md-10 col-sm-12 col-xs-12 form-group">
+                <div class="input-group">
+                    <input type="text" id="txtKeyword" class="form-control" placeholder="Tìm kiếm...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary btn-search" id="btnSearch" type="button"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+            </div>
+            @{
+                var create = await AuthorizationService.AuthorizeAsync(User, "BLOG", Operation.Create);
+                if (create.Succeeded)
+                {
+                    <div class="col-xl-1 col-md-2  col-sm-12 col-xs-12 form-group">
+                        <button id="btnCreate" class="btn btn-success button-right">Thêm mới</button>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+<div class="clearfix"></div>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="table-responsive">
+                <table class="table table-bordered table-no-bottom">
+                    <thead>
+                        <tr>
+                            <th width="5%">ID</th>
+                            <th width="12%">Thao tác</th>
+                            <th>Tiêu đề</th>
+                            <th>Ngày tạo</th>
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbl-content"></tbody>
+                </table>
+                <!--Pagination-->
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="dataTables_info" id="datatable-checkbox_info" role="status" aria-live="polite">
+                            <select id="ddlShowPage">
+                                <option value="10" selected="selected">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                            </select>
+                            Tổng số bản ghi: <strong id="lblTotalRecords"></strong>
+                        </div>
+                    </div><div class="col-md-5">
+                        <div class="dataTables_paginate paging_simple_numbers" id="datatable-checkbox_paginate">
+                            <ul id="paginationUL"></ul>
+                        </div>
+                    </div>
+                </div>
+                <!--end Pagination-->
+            </div> <!--end table-responsive-->
+        </div>
+    </div>
+</div>
+<script id="table-template" type="x-tmpl-mustache">
+    <tr>
+        <td>{{Id}}</td>
+        <th scope="row">
+            @{
+                var update = await AuthorizationService.AuthorizeAsync(User, "BLOG", Operation.Update);
+                if (update.Succeeded)
+                {
+                    <button class="btn btn-sm btn-edit" data-id="{{Id}}"><i class="fa fa-pencil"></i></button>
+                }
+
+                var delete = await AuthorizationService.AuthorizeAsync(User, "BLOG", Operation.Delete);
+                if (delete.Succeeded)
+                {
+                    <button class="btn btn-sm btn-delete" data-id="{{Id}}"><i class="fa fa-trash"></i></button>
+                }
+            }
+        </th>
+        <td>{{Name}}</td>
+        <td>{{CreatedDate}}</td>
+        <td>{{{Status}}}</td>
+    </tr>
+</script>
+
+@Html.Partial("_AddEditModal.cshtml")
