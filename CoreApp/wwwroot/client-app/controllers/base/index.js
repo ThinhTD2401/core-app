@@ -6,28 +6,28 @@
 
     function registerEvents() {
 
-        $('body').on('click', '.add-to-cart', function (e) {
-            appcore.startLoading();
-            e.preventDefault();
-            var id = $(this).data('id');
-            $.ajax({
-                url: '/Cart/AddToCart',
-                type: 'post',
-                data: {
-                    productId: id,
-                    quantity: 1,
-                    color: 0,
-                    size: 0
-                },
-                success: function (response) {
-                    appcore.notify(Message.addItemSuccess, Notify.success);
-                    loadHeaderCart();
-                },
-                error: function () {
-                    appcore.stopLoading();
-                }
-            });
-        });
+        //$('body').on('click', '.add-to-cart', function (e) {
+        //    appcore.startLoading();
+        //    e.preventDefault();
+        //    var id = $(this).data('id');
+        //    $.ajax({
+        //        url: '/Cart/AddToCart',
+        //        type: 'post',
+        //        data: {
+        //            productId: id,
+        //            quantity: 1,
+        //            color: 0,
+        //            size: 0
+        //        },
+        //        success: function (response) {
+        //            appcore.notify(Message.addItemSuccess, Notify.success);
+        //            loadHeaderCart();
+        //        },
+        //        error: function () {
+        //            appcore.stopLoading();
+        //        }
+        //    });
+        //});
 
         $('body').on('click', '.remove-cart', function (e) {
             appcore.startLoading();

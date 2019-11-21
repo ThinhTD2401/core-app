@@ -23,7 +23,6 @@ namespace CoreApp.Controllers.Components
             Task<SearchResultViewModel> task = Task.Factory.StartNew<SearchResultViewModel>(() => {
                 return Excute(keyword, pageSize, sortOrder, sortBy, pageIndex); ;
             });
-            var result = await task;
             return View(await task);
 
         }

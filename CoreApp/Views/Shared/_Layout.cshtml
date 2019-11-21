@@ -38,26 +38,17 @@
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <!-- mobile menu -->
-    @await Component.InvokeAsync("MobileMenu")
+    
     <!-- end mobile menu -->
     <div id="page">
-
+        @await Component.InvokeAsync("MobileMenu")
         <!-- Header -->
         @Html.Partial("_Header.cshtml")
         <!-- end header -->
         <nav>
             <div class="container">
                 <div class="row">
-                    <div class="mm-toggle-wrap">
-                        <div class="mm-toggle"><i class="fa fa-align-justify"></i> </div>
-                        <span class="mm-label">All Categories</span>
-                    </div>
-                    <div class="col-md-3 col-sm-3 mega-container hidden-xs">
-                        @await Component.InvokeAsync("CategoryMenu")
-                    </div>
-                    <div class="col-md-9 col-sm-9 jtv-megamenu">
-                        @await Component.InvokeAsync("MainMenu")
-                    </div>
+                    @await Component.InvokeAsync("MainMenu")
                 </div>
             </div>
         </nav>
@@ -68,20 +59,14 @@
         <!-- End Footer -->
     </div>
 
-    <!-- JS -->
-    @*<!-- jquery js -->
-        <script type="text/javascript" src="~/client-side/js/jquery.min.js"></script>
-
-        <!-- bootstrap js -->
-        <script type="text/javascript" src="~/client-side/js/bootstrap.min.js"></script>*@
-
+  
     <!-- jQuery -->
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <!-- Bootstrap -->
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 
     <!-- owl.carousel.min js -->
-    <script type="text/javascript" src="~/client-side/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="~/client-side/js/owl.carousel.min.js"></script>F
 
     <!-- jquery.mobile-menu js -->
     <script type="text/javascript" src="~/client-side/js/mobile-menu.js"></script>

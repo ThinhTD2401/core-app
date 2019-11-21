@@ -16,7 +16,7 @@
                         @{
                             if (isHomePage)
                             {
-                                <h2>Các sản phẩm khác</h2>
+                                <h2>Sản phẩm</h2>
                             }
                             else
                             {
@@ -65,7 +65,7 @@
                                                     }
                                                 }
                                                 <div class="pr-img-area">
-                                                    <a title="Ipsums Dolors Untra" href="@url">
+                                                    <a title="@item.Name" href="@url">
                                                         <figure> <img class="first-img" src="@item.Image" alt="@item.Name"> <img class="hover-img" src="@item.Image" alt="@item.Name"></figure>
                                                     </a>
                                                 </div>
@@ -79,19 +79,14 @@
                                                 <div class="info-inner">
                                                     <div class="item-title"> <a title="@item.Name" href="@url">@item.Name</a> </div>
                                                     <div class="item-content">
-                                                        <div class="rating">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                        </div>
                                                         <div class="item-price">
-                                                            <div class="price-box"> <span class="regular-price"> <span class="price">@item.Price.ToString("N0")</span> </span> </div>
+                                                            <div class="price-box"> <span class="regular-price"> @*<span class="price">@item.Price.ToString("N0")</span>*@ </span> </div>
                                                         </div>
-                                                        <div class="pro-action">
-                                                            <button type="button" class="add-to-cart" data-id="@item.Id"><span> Mua ngay</span> </button>
-                                                        </div>
+                                                        <a title="@item.Name" href="@url">
+                                                            <div class="pro-action">
+                                                                <button type="button" class="add-to-cart"><span>Chi tiết</span></button>
+                                                            </div>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>

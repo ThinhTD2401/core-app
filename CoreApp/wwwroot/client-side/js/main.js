@@ -1,7 +1,7 @@
 jQuery(document).ready(function() {
     "use strict";
 
-
+    let timeClickMenu = 1;
     /******************************************
        Newsletter popup
     ******************************************/
@@ -20,17 +20,17 @@ jQuery(document).ready(function() {
     	Mobile menu
     ******************************************/
 
-    jQuery("#mobile-menu").mobileMenu({
-            MenuWidth: 250,
-            SlideSpeed: 300,
-            WindowsMaxWidth: 767,
-            PagePush: !0,
-            FromLeft: !0,
-            Overlay: !0,
-            CollapseMenu: !0,
-            ClassName: "mobile-menu"
+    //jQuery("#mobile-menu").mobileMenu({
+    //        MenuWidth: 250,
+    //        SlideSpeed: 300,
+    //        WindowsMaxWidth: 767,
+    //        PagePush: !0,
+    //        FromLeft: !0,
+    //        Overlay: !0,
+    //        CollapseMenu: !0,
+    //        ClassName: "mobile-menu"
 
-        }),
+    //    }),
 
         /******************************************
         	Our clients slider
@@ -203,18 +203,18 @@ jQuery(document).ready(function() {
     ******************************************/
 
     jQuery("#latest-news-slider .slider-items").owlCarousel({
-            autoplay: !0,
-            items: 4,
-            itemsDesktop: [1024, 3],
-            itemsDesktopSmall: [900, 2],
-            itemsTablet: [640, 1],
-            itemsMobile: [480, 1],
-            navigation: !0,
-            navigationText: ['<a class="flex-prev"></a>', '<a class="flex-next"></a>'],
-            slideSpeed: 500,
-            pagination: !1,
-            transitionStyle: "backSlide"
-        }),
+        autoplay: !0,
+        items: 4,
+        itemsDesktop: [1024, 3],
+        itemsDesktopSmall: [900, 2],
+        itemsTablet: [640, 1],
+        itemsMobile: [480, 1],
+        navigation: !0,
+        navigationText: ['<a class="flex-prev"></a>', '<a class="flex-next"></a>'],
+        slideSpeed: 500,
+        pagination: !1,
+        transitionStyle: "backSlide"
+    }),
         /******************************************
         	testimonials slider
         ******************************************/
@@ -237,34 +237,39 @@ jQuery(document).ready(function() {
         	Mega Menu
         ******************************************/
 
-        jQuery('.mega-menu-title').on('click', function() {
-            if (jQuery('.mega-menu-category').is(':visible')) {
-                jQuery('.mega-menu-category').slideUp();
-            } else {
-                jQuery('.mega-menu-category').slideDown();
+        jQuery('.mtmegamenu ul li.mt-root').on('click', function () {
+            let iconChange = $(this).find('.mt-root-item .title i');
+            let subMenu = $(this).children('.menu-items');
+            if (subMenu.is(':parent')) {
+                timeClickMenu++;
+                subMenu.stop(true, true);
+                if (timeClickMenu % 2) {
+                    subMenu.slideUp('slow');
+                    iconChange.removeClass('fa-minus').addClass('fa-plus');
+                    
+                } else {
+                    subMenu.slideDown('slow');
+                    iconChange.removeClass('fa-plus').addClass('fa-minus');
+                }
             }
+           
         });
 
-
-    jQuery('.mega-menu-category .nav > li').hover(function() {
-        jQuery(this).addClass("active");
-        jQuery(this).find('.popup').stop(true, true).fadeIn('slow');
-    }, function() {
-        jQuery(this).removeClass("active");
-        jQuery(this).find('.popup').stop(true, true).fadeOut('slow');
-    });
-
-
-    jQuery('.mega-menu-category .nav > li.view-more').on('click', function(e) {
-        if (jQuery('.mega-menu-category .nav > li.more-menu').is(':visible')) {
-            jQuery('.mega-menu-category .nav > li.more-menu').stop().slideUp();
-            jQuery(this).find('a').text('More category');
-        } else {
-            jQuery('.mega-menu-category .nav > li.more-menu').stop().slideDown();
-            jQuery(this).find('a').text('Close menu');
-        }
-        e.preventDefault();
-    });
+    jQuery('.nav-menu-mobile').on('click', function () {
+            let iconMenu = $(this)
+            let menu = $(this).parent().siblings('.mtmegamenu');
+            if (menu.hasClass('menu-mobile-active')) {
+                menu.removeClass('menu-mobile-active');
+                $(this).removeClass('fa-times').addClass('fa-bars');
+                menu.slideUp('slow');
+               
+            } else {
+                menu.addClass('menu-mobile-active');
+                menu.slideDown('slow');
+                $(this).removeClass('fa-bars').addClass('fa-times');
+            } 
+        });
+    
     /******************************************
        Category desc slider
     ******************************************/
