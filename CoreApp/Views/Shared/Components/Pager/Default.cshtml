@@ -15,45 +15,47 @@
     var startIndex = Math.Max(Model.CurrentPage - 5, 1);
     var finishIndex = Math.Min(Model.CurrentPage + 5, Model.PageCount);
 }
-<div class="pagination-area">
-    <div class="col-md-4 col-sm-4 items-info">
-        Từ @Model.FirstRowOnPage đến @Model.LastRowOnPage của @Model.RowCount 
-    </div>
-    <div class="col-md-8 col-sm-8">
-        @if (Model.PageCount > 1)
-        {
-        <ul id="pager">
-            @if (Model.CurrentPage == startIndex)
-            {
-                <li><i class="fa fa-angle-left"></i></li>
-            }
-            else
-            {
-                @*<li><a href="@urlTemplate.Replace("{0}", Model.PageCount.ToString())"><i class="fa fa-angle-left"></i></a></li>*@
-                <li><span data-id="@startIndex"><i class="fa fa-angle-left"></i></span></li>
-            }
-            @for (var i = startIndex; i <= finishIndex; i++)
-            {
-                if (i == Model.CurrentPage)
+@if (Model.PageCount > 1)
+{
+    <div class="pagination-area">
+        <div class="col-md-4 col-sm-4 items-info">
+            Từ @Model.FirstRowOnPage đến @Model.LastRowOnPage của @Model.RowCount
+        </div>
+        <div class="col-md-8 col-sm-8">
+
+            <ul id="pager">
+                @if (Model.CurrentPage == startIndex)
                 {
-                    <li><span class="active" data-id=""><span>@i</span></span></li>
+                    <li><i class="fa fa-angle-left"></i></li>
                 }
                 else
                 {
-                    @*<li><a href="@urlTemplate.Replace("{0}", i.ToString())">@i</a></li>*@
-                    <li><span data-id="@i.ToString()">@i</span></li>
+                    @*<li><a href="@urlTemplate.Replace("{0}", Model.PageCount.ToString())"><i class="fa fa-angle-left"></i></a></li>*@
+                    <li><span data-id="@startIndex"><i class="fa fa-angle-left"></i></span></li>
                 }
-            }
-            @if (Model.CurrentPage == finishIndex)
-            {
-                <li><i class="fa fa-angle-right"></i></li>
-            }
-            else
-            {
-                @*<li><a href="@urlTemplate.Replace("{0}", Model.PageCount.ToString())"><i class="fa fa-angle-right"></i></a></li>*@
-                <li><span data-id="@Model.PageCount.ToString()"><i class="fa fa-angle-right"></i></span></li>
-            }
-        </ul>
-        }
+                @for (var i = startIndex; i <= finishIndex; i++)
+                {
+                    if (i == Model.CurrentPage)
+                    {
+                        <li><span class="active" data-id=""><span>@i</span></span></li>
+                    }
+                    else
+                    {
+                        @*<li><a href="@urlTemplate.Replace("{0}", i.ToString())">@i</a></li>*@
+                        <li><span data-id="@i.ToString()">@i</span></li>
+                    }
+                }
+                @if (Model.CurrentPage == finishIndex)
+                {
+                    <li><i class="fa fa-angle-right"></i></li>
+                }
+                else
+                {
+                    @*<li><a href="@urlTemplate.Replace("{0}", Model.PageCount.ToString())"><i class="fa fa-angle-right"></i></a></li>*@
+                    <li><span data-id="@Model.PageCount.ToString()"><i class="fa fa-angle-right"></i></span></li>
+                }
+            </ul>
+
+        </div>
     </div>
-</div>
+}

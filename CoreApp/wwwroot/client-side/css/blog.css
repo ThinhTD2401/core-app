@@ -206,13 +206,14 @@ a.read-more {
     }
 
 .blog-posts .post-item {
-    height: calc(53vh) !important;
+    height: 500px !important;
     padding-bottom: 18px;
     padding-top: 15px;
     list-style: outside none none;
     color: #999;
     font-size: 12px;
     line-height: 20px;
+    padding-left: 0px;
 }
 
 .center_column .blog-posts .post-item {
@@ -372,6 +373,10 @@ a.read-more {
     margin-bottom: 30px;
     font-size: 13px;
 }
+
+    .entry-detail .entry-photo img {
+        width: 100%;
+    }
 
     .entry-detail .page-title {
         margin-bottom: 12px;
@@ -656,7 +661,8 @@ blockquote {
 }
 
 .primary-img {
-    height: calc(34vh) !important;
+    height: 300px !important;
+    width: 100%;
 }
 
 @media only screen and (min-width: 280px) and (max-width: 479px) {
@@ -674,10 +680,10 @@ blockquote {
         padding: 10px 12px 12px;
     }
 
-        .entry-detail .entry-meta-data .rating {
-            float: none;
-            margin-top: 6px;
-        }
+    .entry-detail .entry-meta-data .rating {
+        float: none;
+        margin-top: 6px;
+    }
 
     .comment-list ul {
         padding-left: 0px;

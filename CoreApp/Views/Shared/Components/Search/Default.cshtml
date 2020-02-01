@@ -52,18 +52,7 @@
                                     <div class="product-item">
                                         <div class="item-inner">
                                             <div class="product-thumbnail">
-                                                @{
-                                                    if (item.PromotionPrice.HasValue)
-                                                    {
-                                                        var percentSale = Math.Ceiling((item.PromotionPrice.Value - item.OriginalPrice) / (item.OriginalPrice));
-                                                        <div class="icon-sale-label sale-left">Khuyến mãi @percentSale %</div>
-                                                    }
-
-                                                    if (item.HotFlag.HasValue && item.HotFlag.Value)
-                                                    {
-                                                        <div class="icon-new-label new-right">Mới</div>
-                                                    }
-                                                }
+                                               
                                                 <div class="pr-img-area">
                                                     <a title="@item.Name" href="@url">
                                                         <figure> <img class="first-img" src="@item.Image" alt="@item.Name"> <img class="hover-img" src="@item.Image" alt="@item.Name"></figure>

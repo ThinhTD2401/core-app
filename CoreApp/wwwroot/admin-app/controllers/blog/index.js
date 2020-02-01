@@ -351,7 +351,7 @@
         $('#txtTagM').tagEditor('destroy');
         $('#txtTagM').tagEditor({
             initialTags: src,
-            delimiter: ', ', /* space and comma */
+            delimiter: ',', /* space and comma */
             placeholder: 'Nhập các tags ...'
         });
     }

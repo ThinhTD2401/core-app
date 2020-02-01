@@ -3,6 +3,7 @@
     this.initialize = function () {
         loadData();
         registerEvents();
+        appcore.stopLoading();
 
     };
 
@@ -29,7 +30,7 @@
             e.preventDefault();
             const id = $('#hidIdM').val();
             const urlGetById = "/Admin/ProductCategory/GetById";
-            appcore.startLoading();
+            //appcore.startLoading();
             service.getData({ url: urlGetById, dataType: DataType.json, data: { id: id }})
                 .done((response) => {
                     var data = response;
@@ -48,11 +49,11 @@
                     $('#txtOrderM').val(data.SortOrder);
                     $('#txtHomeOrderM').val(data.HomeOrder);
                     $('#modal-add-edit').modal('show');
-                    appcore.stopLoading();
+                    //appcore.stopLoading();
                 })
                 .fail((status) => {
                     appcore.notify(Message.loginFail, Notify.danger);
-                    appcore.stopLoading();
+                    //appcore.stopLoading();
                 });
         });
 
@@ -60,7 +61,7 @@
             e.preventDefault();
             let id = $('#hidIdM').val();
             appcore.confirm('Are you sure to delete?', () => {
-                appcore.startLoading();
+                //appcore.startLoading();
                 let urlDelete = '/Admin/ProductCategory/Delete';
                 service.postData({
                     url: urlDelete,
@@ -69,12 +70,12 @@
                 })
                 .done((response) => {
                     appcore.notify('Deleted success', 'success');
-                    appcore.stopLoading();
+                    //appcore.stopLoading();
                     loadData();
                 })
                 .fail((status) => {
                     appcore.notify('Has an error in deleting progress', 'error');
-                    appcore.stopLoading();
+                    //appcore.stopLoading();
                 });
             });
         });
@@ -96,7 +97,7 @@
                 const status = $('#ckStatusM').prop('checked') === true ? 1 : 0;
                 const showHome = $('#ckShowHomeM').prop('checked');
                 const urlSaveEntity = '/Admin/ProductCategory/SaveEntity';
-                appcore.startLoading();
+                //appcore.startLoading();
                 service.postData({
                     url: urlSaveEntity,
                     dataType: DataType.json,
@@ -120,12 +121,12 @@
                         appcore.notify('Update success', 'success');
                         $('#modal-add-edit').modal('hide');
                         resetFormMaintainance();
-                        appcore.stopLoading();
+                       // appcore.stopLoading();
                         loadData(true);
                     })
                     .fail((status) => {
                         appcore.notify('Has an error in update progress', 'error');
-                        appcore.stopLoading();
+                        //appcore.stopLoading();
                     });
             }
             return false;

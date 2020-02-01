@@ -12,6 +12,7 @@
         quantityManagement.initialize();
         imageManagement.initialize();
         wholePriceManagement.initialize();
+        initialTags([]);
     };
 
     function registerEvents() {
@@ -91,7 +92,12 @@
                     $('#ckStatusM').prop('checked', data.Status === 1);
                     $('#ckHotM').prop('checked', data.HotFlag);
                     $('#ckShowHomeM').prop('checked', data.HomeFlag);
-
+                    initialTags([]);
+                    if (data.Tags !== null) {
+                        const srcTags = data.Tags.split(',');
+                        initialTags(srcTags);
+                    }
+                    $('#txtTagM').val(data.Tags);
                     $('#modal-add-edit').modal('show');
                     appcore.stopLoading();
                 })
@@ -139,12 +145,15 @@
                 const name = $('#txtNameM').val();
                 const categoryId = $('#ddlCategoryIdM').combotree('getValue');
                 const description = $('#txtDescM').val();
-                const unit = $('#txtUnitM').val();
-                const price = $('#txtPriceM').val();
-                const originalPrice = parseInt($('#txtOriginalPriceM').val() === '' ? '0' : $('#txtOriginalPriceM').val());
-                const promotionPrice = $('#txtPromotionPriceM').val();
+
+                const unit = '1';
+                const price = 1;
+                const originalPrice = 1;
+                const promotionPrice = 1;
+
                 const image = $('#txtImage').val();
-                const tags = $('#txtTagM').val();
+                const srctags = $('#txtTagM').tagEditor('getTags')[0].tags;
+                const tags = srctags.join();
                 const seoKeyword = $('#txtMetakeywordM').val();
                 const seoMetaDescription = $('#txtMetaDescriptionM').val();
                 const seoPageTitle = $('#txtSeoPageTitleM').val();
@@ -384,7 +393,6 @@
         $('#txtImage').val('');
         $('#img-prouduct-content').html('');
 
-        $('#txtTagM').val('');
         $('#txtMetakeywordM').val('');
         $('#txtMetaDescriptionM').val('');
         $('#txtSeoPageTitleM').val('');
@@ -394,6 +402,7 @@
         $('#ckStatusM').prop('checked', true);
         $('#ckHotM').prop('checked', false);
         $('#ckShowHomeM').prop('checked', false);
+        initialTags([]);
 
     }
 
@@ -450,6 +459,15 @@
         let srcImage = isNullOrEmpty ? Image.productDefault : src;
         let render = Mustache.render(tmplImageProduct, { srcImage: srcImage });
         $('#img-prouduct-content').html(render);
+    }
+
+    function initialTags(src) {
+        $('#txtTagM').tagEditor('destroy');
+        $('#txtTagM').tagEditor({
+            initialTags: src,
+            delimiter: ',', /* space and comma */
+            placeholder: 'Nhập các tags ...'
+        });
     }
 
 };

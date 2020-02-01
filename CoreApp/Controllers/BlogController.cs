@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using CoreApp.Models.BlogViewModels;
+﻿
 using CoreApp.Application.Interfaces;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using CoreApp.Models.BlogViewModels;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CoreApp.Controllers
 {
@@ -26,7 +22,7 @@ namespace CoreApp.Controllers
             return View();
         }
 
-        [Route("{alias}-blog.{id}.html", Name = "BlogDetail")]
+        [Route("{alias}-bai-viet.{id}.html", Name = "BlogDetail")]
         public IActionResult Details(int id)
         {
             ViewData["BodyClass"] = "product-page";

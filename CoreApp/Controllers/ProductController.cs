@@ -1,4 +1,5 @@
 ﻿using CoreApp.Application.Interfaces;
+using CoreApp.Application.ViewModels.Product;
 using CoreApp.Models.ProductViewModels;
 using Ionic.Zip;
 using Microsoft.AspNetCore.Hosting;
@@ -64,7 +65,15 @@ namespace CoreApp.Controllers
             model.Category = _productCategoryService.GetById(model.Product.CategoryId);
             model.RelatedProducts = _productService.GetRelatedProducts(id, 9);
             model.UpSellProducts = _productService.GetUpsellProducts(6);
+            var imageProduct = new ProductImageViewModel()
+            {
+                Path = model.Product.Image
+            };
             model.ProductImages = _productService.GetImages(id);
+            if(!string.IsNullOrEmpty(model.Product.Image))
+            {
+                model.ProductImages.Add(imageProduct);
+            }
             model.Tags = _productService.GetProductTags(id);
             model.Colors = _billService.GetColors().Select(x => new SelectListItem()
             {

@@ -951,6 +951,20 @@
         margin: 0px;
     }
 
+    .product-detail {
+        padding: 20px 0px !important;
+    }
+
+    .product-info {
+        margin-top: 20px;
+    }
+
+    .hidden-sm {
+        opacity: 0;
+        visibility: hidden;
+        display: none;
+    }
+
     .page-title h2 {
         font-size: 16px;
         font-weight: 400;

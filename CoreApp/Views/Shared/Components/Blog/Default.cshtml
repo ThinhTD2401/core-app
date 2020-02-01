@@ -14,27 +14,26 @@
                     <h2>Tin tức</h2>
                 </div>
                 <ul class="blog-posts">
-                    @foreach (var item in Model.Data.Results)
+                    @foreach (var blog in Model.Data.Results)
                     {
-                        var url = "/" + item.SeoAlias + "-blog." + item.Id + ".html";
+                        var url = string.IsNullOrEmpty(blog.SeoAlias) ? "/tin-tuc" : "/"+ blog.SeoAlias;
+                        url += "-bai-viet." + blog.Id + ".html";
                         <li class="post-item col-md-4">
                             <div class="blog-box">
                                 <a href="@url">
-                                    <img class="primary-img" src="@item.Image" alt="@item.Name">
+                                    <img class="primary-img" src="@blog.Image" alt="@blog.Name">
                                 </a>
                                 <div class="blog-btm-desc">
                                     <div class="blog-top-desc">
-                                        <div class="blog-date">@item.DateCreated.ToString("dd MMMM yyyy")</div>
-                                        <h4><a href="@url">@item.Name</a></h4>
-                                        <div class="jtv-entry-meta"> <i class="fa fa-user-o"></i> <strong>Admin</strong> <a href="#"><i class="fa fa-commenting-o"></i> <strong>15 Comments</strong></a></div>
+                                        <h4><a href="@url">@blog.Name</a></h4>
+                                        <div class="jtv-entry-meta"> <i class="fa fa-user-o"></i> <strong>  Admin</strong> <a href="#"><i class="fa fa-calendar"></i> <strong>  @blog.DateCreated.ToString("dd-MM-yyyy HH:mm:ss")</strong></a></div>
                                     </div>
                                     <br />
-                                    @if (item.Description != null)
+                                    @if (blog.Description != null)
                                     {
-                                        <p>@item.Description</p>
-                                        <br />
+                                        <p>@blog.Description</p>
+                                        <br/>
                                     }
-                                    <a class="read-more" href="@url">Read More</a>
                                 </div>
                             </div>
                         </li>

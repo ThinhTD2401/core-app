@@ -110,9 +110,12 @@ namespace CoreApp.Application.Implementation
         public PageResult<ProductViewModel> GetAllPaging(int? categoryId, string keyword, int pageIndex, int pageSize, string sortField, string sortOrder)
         {
             IQueryable<Data.Entities.Product> query = _productRepository.FindAll(x => x.Status == Status.Active);
+            
             if (!string.IsNullOrEmpty(keyword))
             {
-                query = query.Where(x => x.Name.Contains(keyword));
+                var tag = TextHelper.ToUnsignString(keyword);
+                var productTags = _productTagRepository.FindAll(x => x.TagId.Contains(tag)).Select(x => x.ProductId).ToList();
+                query = query.Where(x => x.Name.Contains(keyword) || productTags.Contains(x.Id));
             }
 
             if (categoryId.HasValue)
@@ -229,9 +232,11 @@ namespace CoreApp.Application.Implementation
             if (!string.IsNullOrEmpty(productVm.Tags))
             {
                 string[] tags = productVm.Tags.Split(',');
+                _productTagRepository.RemoveMultiple(_productTagRepository.FindAll(x => x.ProductId == productVm.Id).ToList());
                 foreach (string t in tags)
                 {
                     string tagId = TextHelper.ToUnsignString(t);
+
                     if (!_tagRepository.FindAll(x => x.Id == tagId).Any())
                     {
                         Tag tag = new Tag
@@ -242,10 +247,10 @@ namespace CoreApp.Application.Implementation
                         };
                         _tagRepository.Add(tag);
                     }
-                    _productTagRepository.RemoveMultiple(_productTagRepository.FindAll(x => x.Id == productVm.Id).ToList());
                     ProductTag productTag = new ProductTag
                     {
-                        TagId = tagId
+                        TagId = tagId,
+                        ProductId = productVm.Id
                     };
                     productTags.Add(productTag);
                 }
@@ -254,7 +259,7 @@ namespace CoreApp.Application.Implementation
             Product product = Mapper.Map<ProductViewModel, Product>(productVm);
             foreach (ProductTag productTag in productTags)
             {
-                product.ProductTags.Add(productTag);
+                _productTagRepository.Add(productTag);
             }
             _productRepository.Update(product);
         }
